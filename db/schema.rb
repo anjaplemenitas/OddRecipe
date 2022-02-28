@@ -39,16 +39,6 @@ ActiveRecord::Schema.define(version: 2022_02_28_172858) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "ingredients_oddboxes", id: false, force: :cascade do |t|
-    t.bigint "oddbox_id", null: false
-    t.bigint "ingredient_id", null: false
-  end
-
-  create_table "ingredients_recipes", id: false, force: :cascade do |t|
-    t.bigint "recipe_id", null: false
-    t.bigint "ingredient_id", null: false
-  end
-
   create_table "meal_plans", force: :cascade do |t|
     t.date "date"
     t.bigint "user_id", null: false
