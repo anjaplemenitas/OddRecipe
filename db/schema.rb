@@ -10,10 +10,71 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_28_151258) do
+ActiveRecord::Schema.define(version: 2022_02_28_155130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ingredients_oddboxes", id: false, force: :cascade do |t|
+    t.bigint "oddbox_id", null: false
+    t.bigint "ingredient_id", null: false
+  end
+
+  create_table "ingredients_recipes", id: false, force: :cascade do |t|
+    t.bigint "recipe_id", null: false
+    t.bigint "ingredient_id", null: false
+  end
+
+  create_table "meal_plans", force: :cascade do |t|
+    t.date "date"
+    t.bigint "user_id", null: false
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_meal_plans_on_recipe_id"
+    t.index ["user_id"], name: "index_meal_plans_on_user_id"
+  end
+
+  create_table "oddboxes", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_oddboxes_on_user_id"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "name"
+    t.integer "cooking_time"
+    t.text "desription"
+    t.text "method"
+    t.string "leftover"
+    t.string "storage"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "recipes_users", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "recipe_id", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.integer "rating"
+    t.bigint "user_id", null: false
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_reviews_on_recipe_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +84,15 @@ ActiveRecord::Schema.define(version: 2022_02_28_151258) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "meal_plans", "recipes"
+  add_foreign_key "meal_plans", "users"
+  add_foreign_key "oddboxes", "users"
+  add_foreign_key "reviews", "recipes"
+  add_foreign_key "reviews", "users"
 end
