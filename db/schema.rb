@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_28_155130) do
+ActiveRecord::Schema.define(version: 2022_02_28_172858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favorites", force: :cascade do |t|
+    t.string "favoritable_type", null: false
+    t.bigint "favoritable_id", null: false
+    t.string "favoritor_type", null: false
+    t.bigint "favoritor_id", null: false
+    t.string "scope", default: "favorite", null: false
+    t.boolean "blocked", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["blocked"], name: "index_favorites_on_blocked"
+    t.index ["favoritable_id", "favoritable_type"], name: "fk_favoritables"
+    t.index ["favoritable_type", "favoritable_id", "favoritor_type", "favoritor_id", "scope"], name: "uniq_favorites__and_favoritables", unique: true
+    t.index ["favoritable_type", "favoritable_id"], name: "index_favorites_on_favoritable"
+    t.index ["favoritor_id", "favoritor_type"], name: "fk_favorites"
+    t.index ["favoritor_type", "favoritor_id"], name: "index_favorites_on_favoritor"
+    t.index ["scope"], name: "index_favorites_on_scope"
+  end
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
@@ -41,6 +59,15 @@ ActiveRecord::Schema.define(version: 2022_02_28_155130) do
     t.index ["user_id"], name: "index_meal_plans_on_user_id"
   end
 
+  create_table "oddbox_ingredients", force: :cascade do |t|
+    t.bigint "oddbox_id", null: false
+    t.bigint "ingredient_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ingredient_id"], name: "index_oddbox_ingredients_on_ingredient_id"
+    t.index ["oddbox_id"], name: "index_oddbox_ingredients_on_oddbox_id"
+  end
+
   create_table "oddboxes", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id", null: false
@@ -49,20 +76,24 @@ ActiveRecord::Schema.define(version: 2022_02_28_155130) do
     t.index ["user_id"], name: "index_oddboxes_on_user_id"
   end
 
+  create_table "recipe_ingredients", force: :cascade do |t|
+    t.bigint "recipe_id", null: false
+    t.bigint "ingredient_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
+    t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.string "name"
     t.integer "cooking_time"
-    t.text "desription"
+    t.text "description"
     t.text "method"
     t.string "leftover"
     t.string "storage"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "recipes_users", id: false, force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "recipe_id", null: false
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -92,7 +123,11 @@ ActiveRecord::Schema.define(version: 2022_02_28_155130) do
 
   add_foreign_key "meal_plans", "recipes"
   add_foreign_key "meal_plans", "users"
+  add_foreign_key "oddbox_ingredients", "ingredients"
+  add_foreign_key "oddbox_ingredients", "oddboxes"
   add_foreign_key "oddboxes", "users"
+  add_foreign_key "recipe_ingredients", "ingredients"
+  add_foreign_key "recipe_ingredients", "recipes"
   add_foreign_key "reviews", "recipes"
   add_foreign_key "reviews", "users"
 end
