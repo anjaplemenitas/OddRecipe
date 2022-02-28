@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :oddboxes, only: %i[show]
+  resources :users, only: %i[show]
+
+  resources :recipes, only: %i[new show edit update destroy] do
+    resources :ratings, only: %i[new edit update destroy]
+  end
 end
