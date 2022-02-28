@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2022_02_28_162845) do
   create_table "recipes", force: :cascade do |t|
     t.string "name"
     t.integer "cooking_time"
-    t.text "desription"
+    t.text "description"
     t.text "method"
     t.string "leftover"
     t.string "storage"
