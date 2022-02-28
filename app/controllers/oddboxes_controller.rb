@@ -1,0 +1,2 @@
+class OddboxesController < ApplicationController
+end
