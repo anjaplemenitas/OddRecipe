@@ -1,31 +1,32 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon">
-      </span>
-    </button>
+    <%= link_to "#", class: "navbar-brand" do %>
+      <%= image_tag "https://www.oddbox.co.uk/static/161a4c925cbc517745352d68883dba6a/10a83/Oddbox-logo.webp" %>
+    <% end %>
 
-      <%= link_to "#", class: "navbar-brand" do %>
-        <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-      <% end %>
+    <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", id: "navbarDropdown", data: { bs_toggle: "collapse", bs_target: '#navbarSupportedContent' }, 'aria-controls': 'navbarSupportedContent', 'aria-expanded': false, 'aria-label': "Toggle navigation"  %>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
+          <i class="fa-solid fa-utensils"></i>
             <%= link_to "Home", "#", class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
+            <%= link_to "OddBox", "#", class: "nav-link" %>
           </li>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            </div>
+           <li class="nav-item">
+            <%= link_to "ShoppingList", "#", class: "nav-link" %>
+          </li>
+           <li class="nav-item">
+            <%= link_to "Calendar", "#", class: "nav-link" %>
+          </li>
+             <li class="nav-item">
+            <%= link_to "OddBook", "#", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
           </li>
         <% else %>
           <li class="nav-item">
@@ -33,7 +34,6 @@
           </li>
         <% end %>
       </ul>
-
     </div>
   </div>
 </div>
