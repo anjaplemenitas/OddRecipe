@@ -59,10 +59,10 @@ puts "---------------------------" * 2
 
 puts "Creating Reviews"
 
-10.times do
+100.times do
   review = Review.new(
     content: Faker::Quote.famous_last_words,
-    rating: rand(0..5),
+    rating: rand(1..5),
     user_id: rand(1..3),
     recipe_id: rand(1..10)
   )
