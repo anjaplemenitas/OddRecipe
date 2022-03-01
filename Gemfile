@@ -35,6 +35,7 @@ gem 'faker'
 gem 'acts_as_favoritor'
 
 
+
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form'
