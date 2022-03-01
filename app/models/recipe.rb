@@ -4,4 +4,10 @@ class Recipe < ApplicationRecord
   has_many :reviews
 
   acts_as_favoritable
+
+  def rating
+    review_sum = reviews.map(&:rating)
+
+    review_sum.sum / review_sum.count
+  end
 end
