@@ -7,5 +7,7 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :recipes, through: :meal_plan
 
+  has_one :oddbox
+
   acts_as_favoritor
 end
