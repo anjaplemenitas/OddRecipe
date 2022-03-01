@@ -62,7 +62,7 @@ puts "Creating Reviews"
 100.times do
   review = Review.new(
     content: Faker::Quote.famous_last_words,
-    rating: rand(3..5),
+    rating: rand(1..5),
     user_id: rand(1..3),
     recipe_id: rand(1..10)
   )
