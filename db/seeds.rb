@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+require 'nokogiri'
+require 'open-uri'
 
 puts "Making the bosses!"
 
@@ -40,6 +42,14 @@ end
 puts "---------------------------" * 2
 
 puts "Creating Recipes!"
+
+odd_url = URI.open("https://www.oddbox.co.uk/recipes")
+odd_noko = Nokogiri::HTML(odd_url)
+
+names = odd_noko.search(".curated-posts-section__post-title h1").map(&:text)
+urls = odd_noko.search(".curated-posts-section__post a").map do |link|
+  link["href"] if link["href"].include?("recipes")
+end
 
 10.times do
   recipes = Recipe.new(
