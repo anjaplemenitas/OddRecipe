@@ -6,15 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-#require
 require 'faker'
 
 puts "Making the bosses!"
 
 ['al@boss.com', 'anja@boss.com', 'alex@boss.com'].each do |user|
   User.create(
-    first_name: "First Name",
-    last_name: "Last Name",
+    first_name: "First",
+    last_name: "Last",
     email: user,
     password: 'password'
   )
@@ -26,17 +25,16 @@ puts "---------------------------" * 2
 
 puts "Creating Medium Oddbox!"
 
-oddbox = Oddbox.create(name: "Medium Oddbox", user_id: 1)
+Oddbox.create(name: "Medium Oddbox", user_id: 1)
 
 puts "Creating Medium Oddbox Ingredients!"
 
-oddbox_ingredients = ["Potatoe", "Aubergine", "Rocket", "Spring Onion", "Spring Green", "Cauliflower", "Mushroom", "Celery"]
-oddbox_ingredients.each do |oddbox_ingredient|
-  Ingredient.create(name: oddbox_ingredient)
+100.times do
+  Ingredient.create(name: Faker::Food.vegetables)
 end
 
-oddbox_ingredients.each do |ing|
-  OddboxIngredient.create(oddbox_id: 1, ingredient_id: Ingredient.find_by(name: ing).id)
+10.times do
+  OddboxIngredient.create(oddbox_id: 1, ingredient_id: Ingredient.all.sample.id)
 end
 
 puts "---------------------------" * 2
@@ -53,7 +51,7 @@ puts "Creating Recipes!"
   )
   recipes.save
   5.times do
-   RecipeIngredient.create(recipe_id: recipes.id, ingredient_id: Ingredient.all.sample.id)
+    RecipeIngredient.create(recipe_id: recipes.id, ingredient_id: Ingredient.all.sample.id)
   end
 end
 
@@ -62,12 +60,12 @@ puts "---------------------------" * 2
 puts "Creating Reviews"
 
 10.times do
-review = Review.new(
-  content: Faker::Quote.famous_last_words,
-  rating: rand(0..5),
-  user_id: rand(1..3),
-  recipe_id: rand(1..10)
-)
+  review = Review.new(
+    content: Faker::Quote.famous_last_words,
+    rating: rand(0..5),
+    user_id: rand(1..3),
+    recipe_id: rand(1..10)
+  )
   review.save
 end
 
