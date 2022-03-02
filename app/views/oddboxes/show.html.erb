@@ -1,6 +1,7 @@
-<div class="container d-flex flex-column align-items-center" style="background-color: white; height: 620px;">
+<div class="container d-flex flex-column align-items-center" style="background-color: white; height: 620px; font-family: 'Inter', sans-serif;
+ font-family: 'Inter', sans-serif;">
   <div class="d-flex flex-column align-items-center py-2">
-    <h2 style="color: #2E5A36; font-weight: 700; font-size: 26pt; font-family: 'Inter', sans-serif;">OddBox</h2>
+    <h2 style="color: #2E5A36; font-weight: 700; font-size: 26pt;">OddBox</h2>
   </div>
   <div class="d-flex" style="padding: 16px; border: solid #F2B63E 5px; border-radius: 3px; width: 73vw;">
     <div>
@@ -14,6 +15,17 @@
     </div>
   </div>
   <div class="d-flex flex-column align-items-center py-2">
-    <h2 class="my-2" style="color: #2E5A36; font-weight: 300; font-size: 16pt; font-family: 'Inter', sans-serif;">Top 5 recipes this week:</h2>
+    <h2 class="my-2" style="color: #2E5A36; font-weight: 300; font-size: 16pt;">Top 5 recipes this week:</h2>
+    <% @oddbox.recipes.each do |recipe| %>
+      <%= link_to recipe_path(recipe), style: "text-decoration: none; color: black; border: solid #2E5A36 5px; width: 73vw; height: 100px; margin-bottom: 8px;" do %>
+        <div class="d-flex">
+          <%= image_tag(recipe.image_url, style: "width: 80%; height: 90px; object-fit: cover;") %>
+          <div class="container">
+            <h4 style="font-weight: 400; font-size: 14pt;"><%= recipe.name %></h4>
+            <p style="margin: 0;"><%= recipe.rating %> / 5</p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>

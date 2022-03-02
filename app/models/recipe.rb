@@ -8,6 +8,6 @@ class Recipe < ApplicationRecord
   def rating
     review_sum = reviews.map(&:rating)
 
-    (review_sum.sum.to_f / review_sum.count).round
+    reviews.empty? ? 0 : (review_sum.sum.to_f / review_sum.count).round
   end
 end
