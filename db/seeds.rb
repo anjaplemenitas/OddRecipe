@@ -76,7 +76,15 @@ end
 
 puts "Creating Medium Oddbox Ingredients!"
 
-["Avocado", "Beetroots", "Bell peppers", "Brussels sprouts", "Carrots", "Cucumbers", "Ginger", "Limes"].each do |ing|
+["Avocado",
+ "Beetroots",
+ "Cavolo nero",
+ "Brussels sprouts",
+ "Carrots",
+ "Cucumbers",
+ "Ginger",
+ "Limes",
+ "Mango"].each do |ing|
   OddboxIngredient.create(oddbox_id: 1, ingredient_id: Ingredient.find_by(name: ing).id)
 end
 
@@ -89,8 +97,8 @@ names.each_with_index do |name, index|
     cooking_time: [10, 15, 20, 25, 30, 35, 40].sample,
     leftover: Faker::Food.vegetables,
     storage: "1 week",
-    image_url: image_urls[index]
-    method: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    method: method[index],
+    image_url: image_urls[index],
     substitute: Faker::Food.fruits
   )
 
@@ -105,12 +113,12 @@ puts "---------------------------" * 2
 
 puts "Creating Reviews"
 
-100.times do
+150.times do
   review = Review.new(
     content: Faker::Quote.famous_last_words,
     rating: rand(1..5),
     user_id: rand(1..3),
-    recipe_id: rand(1..10)
+    recipe_id: rand(1..24)
   )
   review.save
 end
