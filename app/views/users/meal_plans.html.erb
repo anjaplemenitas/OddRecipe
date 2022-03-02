@@ -1,20 +1,43 @@
 <div class="meal-plan-show">
   <h1>Calendar</h1>
-
   <% @meal_plan.each do |meal_plan| %>
     <% meal = meal_plan.recipe_id %>
     <div class = "date-meal-plan">
       <% date = meal_plan.date %>
-      <%= date.strftime('%a') %>
-      <%= date.day %>.
-      <% month = date.month %>
-      <%= Date::MONTHNAMES[month].downcase %>
-    </div>
+      <% ymd = date.to_s.split("-") %>
+      <% year = ymd[0].to_i %>
+      <% month = ymd[1].to_i %>
+      <% day = ymd[2].to_i %>
+    <% if Time.new(year, month, day) >= Time.new(Time.now.strftime("%Y").to_i, Time.now.strftime("%m").to_i, Time.now.strftime("%d").to_i) %>
 
-  <% recipe = Recipe.find(meal) %>
-  <p><%= recipe.name %></p>
-  <p><%= recipe.cooking_time %></p>
-  <p><% review = Review.find(recipe.id) %></p>
-  <%= review.rating %>
+      <%= date.strftime('%a') %>
+      <% month = date.month %>
+      <%= date.day %>.<%= Date::MONTHNAMES[month].downcase %>
+
+    </div>
+    <% recipe = Recipe.find(meal) %>
+    <%= link_to recipe_path(meal) do %>
+        <div class="card-product">
+          <img src="https://images.prismic.io/oddbox/35c3f3e2-e7a0-41f9-95b0-c20bb4aaaa50_IMG_7594.JPG?ixlib=gatsbyFP&auto=compress%2Cformat&fit=max&q=50&w=1446&h=2298" alt="">
+          <div class="text-recipe">
+            <div class="card-product-infos">
+              <h2><%= recipe.name %></h2>
+              <p>Total time: <%= recipe.cooking_time %></p>
+            </div>
+            <div class="stars-meal-plan">
+              <p><% review = Review.find(recipe.id) %></p>
+              <ul class="stars-index"><% 5.times do |x| %>
+                <% if x < review.rating %>
+                  <li class="fa fa-star checked"> </li>
+                <% else %>
+                  <li class="fa fa-star"> </li>
+                <% end %>
+              <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
