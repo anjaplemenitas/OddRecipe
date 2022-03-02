@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :oddboxes, only: %i[show]
-  resources :users, only: %i[show] do
-    resources :meal_plans, only: %i[show]
-  end
+  resources :users, only: %i[show]
 
+  get '/users/:id/meal_plan', to: 'users#meal_plan', as: 'user_meal_plan'
 
   resources :recipes, only: %i[new show edit update destroy] do
     resources :ratings, only: %i[new edit update destroy]
