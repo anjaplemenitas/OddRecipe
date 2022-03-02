@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  get 'user_root', to: redirect("users/:id")
 
   resources :oddboxes, only: %i[show]
   resources :users, only: %i[show]
