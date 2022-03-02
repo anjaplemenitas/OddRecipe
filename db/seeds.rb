@@ -104,12 +104,12 @@ puts "---------------------------" * 2
 
 puts "Creating Reviews"
 
-100.times do
+150.times do
   review = Review.new(
     content: Faker::Quote.famous_last_words,
     rating: rand(1..5),
     user_id: rand(1..3),
-    recipe_id: rand(1..10)
+    recipe_id: rand(1..24)
   )
   review.save
 end

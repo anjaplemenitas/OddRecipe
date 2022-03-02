@@ -16,7 +16,7 @@ class Oddbox < ApplicationRecord
         odd_ing_name.include?(ing)
       end
 
-      recipe if sum_ing.count(true) > 1
+      recipe if sum_ing.count(true).positive?
     end
     recs.compact!
   end
