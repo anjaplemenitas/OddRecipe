@@ -16,8 +16,14 @@ class Oddbox < ApplicationRecord
         odd_ing_name.include?(ing)
       end
 
-      recipe if sum_ing.count(true).positive?
+      recipe if sum_ing.count(true) >= 1
     end
-    recs.compact!
+    sort_recipes(recs.compact!).first(5)
+  end
+
+  private
+
+  def sort_recipes(recipes)
+    recipes.sort_by(&:rating).reverse
   end
 end
