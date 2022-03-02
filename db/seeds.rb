@@ -35,6 +35,14 @@ odd_url = URI.open("https://www.oddbox.co.uk/recipes")
 odd_noko = Nokogiri::HTML(odd_url)
 
 names = odd_noko.search(".curated-posts-section__post-title h1").map(&:text)
+
+image_urls = odd_noko.search(".curated-posts-section__post img").map do |x|
+  unless x['src'].nil?
+    x['src'] if x['src'].include?('prismic')
+  end
+end
+image_urls.compact!
+
 urls = odd_noko.search(".curated-posts-section__post a").map do |link|
   link["href"] if link["href"].include?("recipes")
 end
@@ -81,6 +89,7 @@ names.each_with_index do |name, index|
     cooking_time: [10, 15, 20, 25, 30, 35, 40].sample,
     leftover: Faker::Food.vegetables,
     storage: "1 week",
+    image_url: image_urls[index]
     method: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     substitute: Faker::Food.fruits
   )
