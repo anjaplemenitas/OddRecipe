@@ -1,9 +1,20 @@
-<% @meal_plan.each do |meal_plan| %>
-  <% meal = meal_plan.recipe_id %>
-  <p><%= date = meal_plan.date %></p>
- <% recipe = Recipe.find(meal) %>
- <p><%= recipe.name %></p>
- <p><%= recipe.cooking_time %></p>
- <p><% review = Review.find(recipe.id) %></p>
- <%= review.rating %>
-<% end %>
+<div class="meal-plan-show">
+  <h1>Calendar</h1>
+
+  <% @meal_plan.each do |meal_plan| %>
+    <% meal = meal_plan.recipe_id %>
+    <div class = "date-meal-plan">
+      <% date = meal_plan.date %>
+      <%= date.strftime('%a') %>
+      <%= date.day %>.
+      <% month = date.month %>
+      <%= Date::MONTHNAMES[month].downcase %>
+    </div>
+
+  <% recipe = Recipe.find(meal) %>
+  <p><%= recipe.name %></p>
+  <p><%= recipe.cooking_time %></p>
+  <p><% review = Review.find(recipe.id) %></p>
+  <%= review.rating %>
+  <% end %>
+</div>
