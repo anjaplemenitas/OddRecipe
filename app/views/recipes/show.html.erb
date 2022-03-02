@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="recipe-header">
+    <h1><%= @recipe.name %></h1>
+  </div>
+    <div class="recipe-img">
+      <img src="https://static01.nyt.com/images/2020/04/22/dining/21milkbarrex2/merlin_171379644_8f93d0c8-c7ca-41ae-a8f0-e09b4d0436ad-articleLarge.jpg" alt="Food Image" style="width: 100%;">
+        <i class="fa fa-solid fa-heart"></i>
+    </div>
+    <div class="recipe-card-links">
+      <div class="recipe-time">
+        <p> Total Time: <%= @recipe.cooking_time %> minutes </p>
+          <ul class="recipe-stars"> <% 5.times do |x| %>
+            <% if x < @recipe.rating %>
+              <li class="fa fa-star checked"> </li>
+            <% else %>
+              <li class="fa fa-star"> </li>
+            <% end %>
+           <% end %>
+          </ul>
+      </div>
+        <div class="recipe-cal-btn">
+          <button type="button" class="btn btn-outline-success mb-3" data-toggle="modal" data-target="#exampleModalCenter">Add to Calendar</button>
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Calendar</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Month</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Confirm</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+      <div class="recipe-ing-sub-card">
+        <div class="recipe-ing">
+          <h4>Ingredients:</h4>
+          <ul class="recipe-ing-li">
+          <% @recipe.ingredients.each do |r| %>
+            <li><%= r.name %></li>
+          <% end %>
+          </ul>
+        </div>
+        <div class="recipe-sub">
+          <h4>Substitutes:</h4>
+            <ul class="recipe-sub-li">
+              <li> <%= @recipe.substitute %> </li>
+            </ul>
+        </div>
+      </div>
+      <br>
+        <div class="recipe-desc">
+          <h4>Description:</h4>
+          <p><%= @recipe.description %></p>
+        </div>
+        <br>
+          <div class="recipe-meth">
+            <h4>Recipe:</h4>
+            <p><%= @recipe.method %></p>
+          </div>
+          <br>
+            <div class="recipe-stor">
+              <h4>How to Store:</h4>
+              <p><%= @recipe.storage %></p>
+            </div>
+            <br>
+              <div class="recipe-leftover">
+                <h4>Leftovers:</h4>
+                <p><%= @recipe.leftover %></p>
+              </div>
+              <br>
+                <div class="recipe-review-btn">
+                  <button type="button" class="btn btn-outline-success mb-3 mx-2">Leave a review</button>
+                </div>
+</div>

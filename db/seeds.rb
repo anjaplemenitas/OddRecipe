@@ -90,7 +90,10 @@ names.each_with_index do |name, index|
     leftover: Faker::Food.vegetables,
     storage: "1 week",
     image_url: image_urls[index]
+    method: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    substitute: Faker::Food.fruits
   )
+
   recipe.save
 
   ingredients[index].each do |ing|

@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2022_03_02_165353) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image_url"
+    t.text "substitute"
   end
 
   create_table "reviews", force: :cascade do |t|
