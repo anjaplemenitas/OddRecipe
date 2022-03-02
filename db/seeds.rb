@@ -48,7 +48,8 @@ puts "Creating Recipes!"
     cooking_time: "10 minutes",
     leftover: Faker::Food.vegetables,
     storage: "1 week",
-    method: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    method: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    substitute: Faker::Food.fruits
   )
 
   recipes.save
