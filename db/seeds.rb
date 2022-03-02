@@ -80,8 +80,11 @@ names.each_with_index do |name, index|
     description: descriptions[index],
     cooking_time: [10, 15, 20, 25, 30, 35, 40].sample,
     leftover: Faker::Food.vegetables,
-    storage: "1 week"
+    storage: "1 week",
+    method: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    substitute: Faker::Food.fruits
   )
+
   recipe.save
 
   ingredients[index].each do |ing|
