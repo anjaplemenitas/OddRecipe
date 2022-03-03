@@ -9,6 +9,6 @@ class UsersController < ApplicationController
   end
 
   def oddbook
-    @oddbook = current_user.all_favorited
+    @recipes = current_user.all_favorited
   end
 end
