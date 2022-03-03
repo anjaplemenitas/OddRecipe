@@ -17,9 +17,11 @@
           <li>
             <%= link_to "Recipes", recipes_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= link_to "OddBox", oddbox_path(current_user.oddbox), class: "nav-link" %>
-          </li>
+          <% unless current_user.oddbox.nil? %>
+            <li class="nav-item">
+              <%= link_to "OddBox", oddbox_path(current_user.oddbox), class: "nav-link" %>
+            </li>
+          <% end %>
            <li class="nav-item">
             <%= link_to "ShoppingList", "#", class: "nav-link" %>
           </li>
