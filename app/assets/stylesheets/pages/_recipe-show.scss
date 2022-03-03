@@ -128,15 +128,6 @@
   text-decoration: none;
 }
 
-// .cal-cont {
-//   display: flex;
-//   justify-content: space-between;
-// }
-
-// .cal-card {
-//   padding: 0px 5px 0px 5px;
-// }
-
 .cal-card-title {
   display: flex;
   justify-content: center;
@@ -144,12 +135,10 @@
 
 .cal-card-img {
   border: solid 2px yellow;
-  // border-radius: 50%;
 
   img {
     height: 75px;
     width: 100%;
-    // border-radius: 50%;
   }
 }
 
@@ -159,16 +148,18 @@
   margin-top: 15px;
 }
 
-.carousel-control-prev-icon {
-  background-color: black;
+.fa-angle-right {
+  color: black;
+  font-size: 25px;
   position: absolute;
-  top: 140px;
-  right: 25px;
+  top: 165px;
+  left: 35px;
 }
 
-.carousel-control-next-icon {
-  background-color: black;
+.fa-angle-left {
+  color: black;
+  font-size: 25px;
   position: absolute;
-  top: 140px;
-  left: 32px;
+  top: 165px;
+  right: 25px;
 }
