@@ -18,6 +18,17 @@
            <% end %>
           </ul>
       </div>
+
+      <% dates = [] %>
+        <% 20.times do |i| %>
+        <% dates << ((Date.today + i).strftime("%d")).to_i %>
+      <% end %>
+
+      <% day = [] %>
+        <% 20.times do |i| %>
+        <% day << ((Date.today + i).strftime("%a")) %>
+      <% end %>
+
         <div class="recipe-cal-btn">
         <button type="button" class="btn btn-outline-success mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal"> Add to Calendar </button>
           <div class="modal" id="exampleModal" tabindex="-1">
@@ -37,13 +48,15 @@
                           <div class="col-4">
                             <div class="cal-card my-2">
                               <div class="cal-card-title">
-                                <p>1st</p>
+                                <p><%= dates[0] %></p>
                               </div>
                               <div class="cal-card-img">
-                                <img src="https://static01.nyt.com/images/2020/04/22/dining/21milkbarrex2/merlin_171379644_8f93d0c8-c7ca-41ae-a8f0-e09b4d0436ad-articleLarge.jpg" alt="Food">
+                              <%= link_to recipe_meal_plans_path(@recipe), method: :post do %>
+                                <img src="" alt="">
+                              <% end %>
                               </div>
                               <div class="cal-card-day">
-                                <p>Mon</p>
+                                <p><%= day[0] %></p>
                               </div>
                             </div>
                           </div>
@@ -51,13 +64,15 @@
                           <div class="col-4">
                             <div class="cal-card my-2">
                               <div class="cal-card-title">
-                                <p>2nd</p>
+                                <p><%= dates[1] %></p>
                               </div>
                               <div class="cal-card-img">
-                                <img src="https://static01.nyt.com/images/2020/04/22/dining/21milkbarrex2/merlin_171379644_8f93d0c8-c7ca-41ae-a8f0-e09b4d0436ad-articleLarge.jpg" alt="Food">
+                              <%= link_to recipe_meal_plans_path(@recipe), method: :post do %>
+                                <img src="" alt="">
+                              <% end %>
                               </div>
                               <div class="cal-card-day">
-                                <p>Tue</p>
+                                <p><%= day[1] %></p>
                               </div>
                             </div>
                           </div>
@@ -65,13 +80,15 @@
                           <div class="col-4">
                             <div class="cal-card my-2">
                               <div class="cal-card-title">
-                                <p>3rd</p>
+                                <p><%= dates[2] %></p>
                               </div>
                               <div class="cal-card-img">
-                                <img src="https://static01.nyt.com/images/2020/04/22/dining/21milkbarrex2/merlin_171379644_8f93d0c8-c7ca-41ae-a8f0-e09b4d0436ad-articleLarge.jpg" alt="Food">
+                              <%= link_to recipe_meal_plans_path(@recipe), method: :post do %>
+                                <img src="" alt="">
+                              <% end %>
                               </div>
                               <div class="cal-card-day">
-                                <p>Wed</p>
+                                <p><%= day[2] %></p>
                               </div>
                             </div>
                           </div>
@@ -88,13 +105,15 @@
                           <div class="col-4">
                             <div class="cal-card my-2">
                               <div class="cal-card-title">
-                                <p>4th</p>
+                                <p><%= dates[3] %></p>
                               </div>
                               <div class="cal-card-img">
-                                <img src="https://i.guim.co.uk/img/media/a6795e6f75daa968c1154d4acedc091599c98474/0_299_4973_2984/master/4973.jpg?width=1200&quality=85&auto=format&fit=max&s=b641084777d2dedffc4dc6523078514d" alt="Food">
+                              <%= link_to recipe_meal_plans_path(@recipe), method: :post do %>
+                                <img src="" alt="">
+                              <% end %>
                               </div>
                               <div class="cal-card-day">
-                                <p>Thu</p>
+                                <p><%= day[3] %></p>
                               </div>
                             </div>
                           </div>
@@ -102,13 +121,15 @@
                           <div class="col-4">
                             <div class="cal-card my-2">
                               <div class="cal-card-title">
-                                <p>5th</p>
+                                <p><%= dates[4] %></p>
                               </div>
                               <div class="cal-card-img">
-                                <img src="https://i.guim.co.uk/img/media/a6795e6f75daa968c1154d4acedc091599c98474/0_299_4973_2984/master/4973.jpg?width=1200&quality=85&auto=format&fit=max&s=b641084777d2dedffc4dc6523078514d" alt="Food">
+                              <%= link_to recipe_meal_plans_path(@recipe), method: :post do %>
+                                <img src="" alt="">
+                              <% end %>
                               </div>
                               <div class="cal-card-day">
-                                <p>Fri</p>
+                                <p><%= day[4] %></p>
                               </div>
                             </div>
                           </div>
@@ -116,13 +137,15 @@
                           <div class="col-4">
                             <div class="cal-card my-2">
                               <div class="cal-card-title">
-                                <p>6th</p>
+                                <p><%= dates[5] %></p>
                               </div>
                               <div class="cal-card-img">
-                                <img src="https://i.guim.co.uk/img/media/a6795e6f75daa968c1154d4acedc091599c98474/0_299_4973_2984/master/4973.jpg?width=1200&quality=85&auto=format&fit=max&s=b641084777d2dedffc4dc6523078514d" alt="Food">
+                              <%= link_to recipe_meal_plans_path(@recipe), method: :post do %>
+                                <img src="" alt="">
+                              <% end %>
                               </div>
                               <div class="cal-card-day">
-                                <p>Sat</p>
+                                <p><%= day[5] %></p>
                               </div>
                             </div>
                           </div>
@@ -138,13 +161,15 @@
                           <div class="col-4">
                             <div class="cal-card my-2">
                               <div class="cal-card-title">
-                                <p>7th</p>
+                                <p><%= dates[6] %></p>
                               </div>
                               <div class="cal-card-img">
-                                <img src="https://tatyanaseverydayfood.b-cdn.net/wp-content/uploads/2015/12/Cranberry-Cheesecake-video-recipe-818x1024.jpg" alt="Food">
+                              <%= link_to recipe_meal_plans_path(@recipe), method: :post do %>
+                                <img src="" alt="">
+                              <% end %>
                               </div>
                               <div class="cal-card-day">
-                                <p>Sun</p>
+                                <p><%= day[6] %></p>
                               </div>
                             </div>
                           </div>
@@ -152,13 +177,15 @@
                           <div class="col-4">
                             <div class="cal-card my-2">
                               <div class="cal-card-title">
-                                <p>8th</p>
+                                <p><%= dates[7] %></p>
                               </div>
                               <div class="cal-card-img">
-                                <img src="https://tatyanaseverydayfood.b-cdn.net/wp-content/uploads/2015/12/Cranberry-Cheesecake-video-recipe-818x1024.jpg" alt="Food">
+                              <%= link_to recipe_meal_plans_path(@recipe), method: :post do %>
+                                <img src="" alt="">
+                              <% end %>
                               </div>
                               <div class="cal-card-day">
-                                <p>Mon</p>
+                                <p><%= day[7] %></p>
                               </div>
                             </div>
                           </div>
@@ -166,13 +193,15 @@
                           <div class="col-4">
                             <div class="cal-card my-2">
                               <div class="cal-card-title">
-                                <p>9th</p>
+                                <p><%= dates[8] %></p>
                               </div>
                               <div class="cal-card-img">
-                                <img src="https://tatyanaseverydayfood.b-cdn.net/wp-content/uploads/2015/12/Cranberry-Cheesecake-video-recipe-818x1024.jpg" alt="Food">
+                              <%= link_to recipe_meal_plans_path(@recipe), method: :post do %>
+                                <img src="" alt="">
+                              <% end %>
                               </div>
                               <div class="cal-card-day">
-                                <p>Tue</p>
+                                <p><%= day[8] %></p>
                               </div>
                             </div>
                           </div>
