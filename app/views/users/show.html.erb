@@ -4,7 +4,7 @@
     <%= link_to recipes_path, style: "text-decoration: none; color: black;" do %>
       <h2 class="py-3" style="font-weight: 600; font-family: 'Inter', sans-serif; border: solid #F2B63E 5px; border-radius: 3px; width: 87vw; text-align: center;" >Recipes</h2>
     <% end %>
-
+    
     <% unless current_user.oddbox.nil? %>
       <%= link_to oddbox_path(@oddbox), style: "text-decoration: none; color: black;" do %>
         <h2 class="py-3" style="font-weight: 600; font-family: 'Inter', sans-serif; border: solid #F2B63E 5px; border-radius: 3px; width: 87vw; text-align: center;" >OddBox</h2>
