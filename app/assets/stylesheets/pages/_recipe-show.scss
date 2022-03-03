@@ -32,7 +32,7 @@
   font-size: 15px;
   margin-top: 5px;
   padding-left: 5px;
-  margin-left: 8px;
+  margin-left: 5px;
 
   p {
     margin-bottom: 5px;
@@ -125,4 +125,41 @@
 
 .checked {
   color: orange;
+  text-decoration: none;
+}
+
+.cal-card-title {
+  display: flex;
+  justify-content: center;
+}
+
+.cal-card-img {
+  border: solid 2px yellow;
+
+  img {
+    height: 75px;
+    width: 100%;
+  }
+}
+
+.cal-card-day {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.fa-angle-right {
+  color: black;
+  font-size: 25px;
+  position: absolute;
+  top: 165px;
+  left: 35px;
+}
+
+.fa-angle-left {
+  color: black;
+  font-size: 25px;
+  position: absolute;
+  top: 165px;
+  right: 25px;
 }
