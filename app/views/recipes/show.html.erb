@@ -3,8 +3,10 @@
     <h1><%= @recipe.name %></h1>
   </div>
     <div class="recipe-img">
-      <img src="https://static01.nyt.com/images/2020/04/22/dining/21milkbarrex2/merlin_171379644_8f93d0c8-c7ca-41ae-a8f0-e09b4d0436ad-articleLarge.jpg" alt="Food Image" style="width: 100%;">
-        <i class="fa fa-solid fa-heart"></i>
+      <%= image_tag(@recipe.image_url) %>
+        <%= link_to like_recipe_path(@recipe), remote: true, method: :post do %>
+          <i class="fa fa-solid fa-heart<%= " red" if current_user.favorited?(@recipe) %>"></i>
+        <% end %>
     </div>
     <div class="recipe-card-links">
       <div class="recipe-time">
