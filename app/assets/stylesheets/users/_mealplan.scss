@@ -18,6 +18,7 @@
     position: absolute;
     right: 10px;
     bottom: 0;
+    color: black;
   }
 
   .card-product {
@@ -67,4 +68,7 @@
     text-decoration: none;
   }
 
+  .carousel-item .row{
+    display: flex;
+  }
 }

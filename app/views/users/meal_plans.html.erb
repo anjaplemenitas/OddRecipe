@@ -1,6 +1,47 @@
 <div class="meal-plan-show">
   <h1>Calendar</h1>
-  <% @meal_plan.each do |meal_plan| %>
+
+<% dates = [] %>
+<% 20.times do |i| %>
+<% dates << ((Date.today + i).strftime("%d")).to_i %>
+<% end %>
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+  <div class="carousel-inner">
+
+  <% dates.each_with_index do |date, index| %>
+    <% if index == 0 %>
+      <div class="carousel-item active">
+        <div class="row">
+            <div class="col-5 dates_row">
+    <% end %>
+    <% if [4, 8, 12, 16].include?(index) %>
+      <div class="carousel-item">
+        <div class="row">
+          <div class="col-5 dates_row">
+    <% end %>
+    <%= form_tag user_meal_plan_path, method: :get do %>
+      <%= hidden_field_tag 'date', "#{date}" %>
+      <%= submit_tag "#{date}", class: "btn btn-primary", style: 'border-radius: 50%' %>
+    <% end %>
+    <% if [3, 7, 11, 15, 19].include?(index) %>
+        </div>
+      </div>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+  <% date_counter = @meal_plan[0].date %>
+  <% @meal_plan.each_with_index do |meal_plan, index| %>
     <% meal = meal_plan.recipe_id%>
     <div class = "date-meal-plan">
       <% date = meal_plan.date %>
@@ -9,36 +50,41 @@
       <% month = ymd[1].to_i %>
       <% day = ymd[2].to_i %>
     <% if Time.new(year, month, day) >= Time.new(Time.now.strftime("%Y").to_i, Time.now.strftime("%m").to_i, Time.now.strftime("%d").to_i) %>
-    <%# <% date_counter = Date.today %>
-    <%# <% if meal_plan.date %>
 
-      <%= date.strftime('%a') %>
-      <% month = date.month %>
-      <%= date.day %>.<%= Date::MONTHNAMES[month].downcase %>
+      <% if date_counter == meal_plan.date && index == 0 %>
+        <%= date.strftime('%a') %>
+        <%= date.day %>.<%= Date::MONTHNAMES[date.month].downcase %>
+      <% elsif date_counter != @meal_plan[index - 1].date %>
+        <% date_counter = meal_plan.date %>
+        <%= date.strftime('%a') %>
+        <%= date.day %>.<%= Date::MONTHNAMES[date.month].downcase %>
+      <% end %>
+      <% date_counter = @meal_plan[index + 1].date if index < @meal_plan.count - 1 %>
+
     </div>
-    <% recipe = Recipe.find(meal) %>
-    <%= link_to recipe_path(meal) do %>
-        <div class="card-product">
-          <img src="https://images.prismic.io/oddbox/35c3f3e2-e7a0-41f9-95b0-c20bb4aaaa50_IMG_7594.JPG?ixlib=gatsbyFP&auto=compress%2Cformat&fit=max&q=50&w=1446&h=2298" alt="">
-          <div class="text-recipe">
-            <div class="card-product-infos">
-              <h2><%= recipe.name %></h2>
-              <p>Total time: <%= recipe.cooking_time %></p>
-            </div>
-            <div class="stars-meal-plan">
-              <p><% review = Review.find(recipe.id) %></p>
-              <ul class="stars-index"><% 5.times do |x| %>
-                <% if x < review.rating %>
-                  <li class="fa fa-star checked"> </li>
-                <% else %>
-                  <li class="fa fa-star"> </li>
+      <% recipe = Recipe.find(meal) %>
+      <%= link_to recipe_path(meal) do %>
+          <div class="card-product">
+            <img src="https://images.prismic.io/oddbox/35c3f3e2-e7a0-41f9-95b0-c20bb4aaaa50_IMG_7594.JPG?ixlib=gatsbyFP&auto=compress%2Cformat&fit=max&q=50&w=1446&h=2298" alt="">
+            <div class="text-recipe">
+              <div class="card-product-infos">
+                <h2><%= recipe.name %></h2>
+                <p>Total time: <%= recipe.cooking_time %></p>
+              </div>
+              <div class="stars-meal-plan">
+                <p><% review = Review.find(recipe.id) %></p>
+                <ul class="stars-index"><% 5.times do |x| %>
+                  <% if x < review.rating %>
+                    <li class="fa fa-star checked"> </li>
+                  <% else %>
+                    <li class="fa fa-star"> </li>
+                  <% end %>
                 <% end %>
-              <% end %>
-              </ul>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
     <% end %>
   <% end %>
 </div>
