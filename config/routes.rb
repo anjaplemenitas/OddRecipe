@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get '/users/:id/meal_plan', to: 'users#meal_plans', as: 'user_meal_plan'
 
-  resources :recipes, only: %i[new show edit update destroy] do
+  resources :recipes, only: %i[index new show edit update destroy] do
     resources :ratings, only: %i[new edit update destroy]
   end
 end
