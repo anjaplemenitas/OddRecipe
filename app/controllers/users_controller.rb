@@ -7,11 +7,11 @@ class UsersController < ApplicationController
     @user = current_user
     @meal_plan = MealPlan.where(user_id: @user.id).sort_by(&:date)
 
-    if params[:date].present?
-      @meal_plans_date = MealPlan.where(date: params[:date])
+    # if params[:date].present?
+    #   @meal_plans_date = MealPlan.where(date: params[:date])
     # else
       # @meal_plan = MealPlan.where(user_id: @user.id).sort_by(&:date)
-    end
+    # end
   end
 
   def oddbook
