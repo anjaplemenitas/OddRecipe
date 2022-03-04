@@ -54,8 +54,17 @@
                               </div>
                               <div class="cal-card-img">
                               <%= link_to recipe_meal_plans_path(@recipe, date: dates[0], day: day[0]), method: :post do %>
-                                <% unless @meal_plan[0].nil? %>
-                                  <%= image_tag(Recipe.find(@meal_plan[0].recipe_id).image_url) %>
+                                <% if @meal_plan.empty? %>
+                                  <i class="fa fa-solid fa-plus"></i>
+                                <% else %>
+                                  <% @meal_plan.each_with_index do |meal_plan, index| %>
+                                    <% if meal_plan.date.strftime("%d").to_i == dates[0] %>
+                                      <%= image_tag(Recipe.find(meal_plan.recipe_id).image_url) %>
+                                      <% break %>
+                                    <% elsif index == @meal_plan.length - 1 %>
+                                      <i class="fa fa-solid fa-plus"></i>
+                                    <% end %>
+                                  <% end %>
                                 <% end %>
                               <% end %>
                               </div>
@@ -71,8 +80,19 @@
                                 <p><%= dates[1] %></p>
                               </div>
                               <div class="cal-card-img">
-                              <%= link_to recipe_meal_plans_path(@recipe), method: :post do %>
-                                <img src="" alt="">
+                              <%= link_to recipe_meal_plans_path(@recipe, date: dates[1], day: day[1]), method: :post do %>
+                                <% if @meal_plan.empty? %>
+                                  <i class="fa fa-solid fa-plus"></i>
+                                <% else %>
+                                  <% @meal_plan.each_with_index do |meal_plan, index| %>
+                                    <% if meal_plan.date.strftime("%d").to_i == dates[1] %>
+                                      <%= image_tag(Recipe.find(meal_plan.recipe_id).image_url) %>
+                                      <% break %>
+                                    <% elsif index == @meal_plan.length - 1 %>
+                                      <i class="fa fa-solid fa-plus"></i>
+                                    <% end %>
+                                  <% end %>
+                                <% end %>
                               <% end %>
                               </div>
                               <div class="cal-card-day">
@@ -87,8 +107,19 @@
                                 <p><%= dates[2] %></p>
                               </div>
                               <div class="cal-card-img">
-                              <%= link_to recipe_meal_plans_path(@recipe), method: :post do %>
-                                <img src="" alt="">
+                              <%= link_to recipe_meal_plans_path(@recipe, date: dates[2], day: day[2]), method: :post do %>
+                                <% if @meal_plan.empty? %>
+                                  <i class="fa fa-solid fa-plus"></i>
+                                <% else %>
+                                  <% @meal_plan.each_with_index do |meal_plan, index| %>
+                                    <% if meal_plan.date.strftime("%d").to_i == dates[2] %>
+                                      <%= image_tag(Recipe.find(meal_plan.recipe_id).image_url) %>
+                                      <% break %>
+                                    <% elsif index == @meal_plan.length - 1 %>
+                                      <i class="fa fa-solid fa-plus"></i>
+                                    <% end %>
+                                  <% end %>
+                                <% end %>
                               <% end %>
                               </div>
                               <div class="cal-card-day">
@@ -112,8 +143,19 @@
                                 <p><%= dates[3] %></p>
                               </div>
                               <div class="cal-card-img">
-                              <%= link_to recipe_meal_plans_path(@recipe), method: :post do %>
-                                <img src="" alt="">
+                              <%= link_to recipe_meal_plans_path(@recipe, date: dates[3], day: day[3]), method: :post do %>
+                                <% if @meal_plan.empty? %>
+                                  <i class="fa fa-solid fa-plus"></i>
+                                <% else %>
+                                  <% @meal_plan.each_with_index do |meal_plan, index| %>
+                                    <% if meal_plan.date.strftime("%d").to_i == dates[3] %>
+                                      <%= image_tag(Recipe.find(meal_plan.recipe_id).image_url) %>
+                                      <% break %>
+                                    <% elsif index == @meal_plan.length - 1 %>
+                                      <i class="fa fa-solid fa-plus"></i>
+                                    <% end %>
+                                  <% end %>
+                                <% end %>
                               <% end %>
                               </div>
                               <div class="cal-card-day">
@@ -128,8 +170,19 @@
                                 <p><%= dates[4] %></p>
                               </div>
                               <div class="cal-card-img">
-                              <%= link_to recipe_meal_plans_path(@recipe), method: :post do %>
-                                <img src="" alt="">
+                              <%= link_to recipe_meal_plans_path(@recipe, date: dates[4], day: day[4]), method: :post do %>
+                                <% if @meal_plan.empty? %>
+                                  <i class="fa fa-solid fa-plus"></i>
+                                <% else %>
+                                  <% @meal_plan.each_with_index do |meal_plan, index| %>
+                                    <% if meal_plan.date.strftime("%d").to_i == dates[4] %>
+                                      <%= image_tag(Recipe.find(meal_plan.recipe_id).image_url) %>
+                                      <% break %>
+                                    <% elsif index == @meal_plan.length - 1 %>
+                                      <i class="fa fa-solid fa-plus"></i>
+                                    <% end %>
+                                  <% end %>
+                                <% end %>
                               <% end %>
                               </div>
                               <div class="cal-card-day">
@@ -144,8 +197,19 @@
                                 <p><%= dates[5] %></p>
                               </div>
                               <div class="cal-card-img">
-                              <%= link_to recipe_meal_plans_path(@recipe), method: :post do %>
-                                <img src="" alt="">
+                              <%= link_to recipe_meal_plans_path(@recipe, date: dates[5], day: day[5]), method: :post do %>
+                                <% if @meal_plan.empty? %>
+                                  <i class="fa fa-solid fa-plus"></i>
+                                <% else %>
+                                  <% @meal_plan.each_with_index do |meal_plan, index| %>
+                                    <% if meal_plan.date.strftime("%d").to_i == dates[5] %>
+                                      <%= image_tag(Recipe.find(meal_plan.recipe_id).image_url) %>
+                                      <% break %>
+                                    <% elsif index == @meal_plan.length - 1 %>
+                                      <i class="fa fa-solid fa-plus"></i>
+                                    <% end %>
+                                  <% end %>
+                                <% end %>
                               <% end %>
                               </div>
                               <div class="cal-card-day">
@@ -168,8 +232,19 @@
                                 <p><%= dates[6] %></p>
                               </div>
                               <div class="cal-card-img">
-                              <%= link_to recipe_meal_plans_path(@recipe), method: :post do %>
-                                <img src="" alt="">
+                              <%= link_to recipe_meal_plans_path(@recipe, date: dates[6], day: day[6]), method: :post do %>
+                                <% if @meal_plan.empty? %>
+                                  <i class="fa fa-solid fa-plus"></i>
+                                <% else %>
+                                  <% @meal_plan.each_with_index do |meal_plan, index| %>
+                                    <% if meal_plan.date.strftime("%d").to_i == dates[6] %>
+                                      <%= image_tag(Recipe.find(meal_plan.recipe_id).image_url) %>
+                                      <% break %>
+                                    <% elsif index == @meal_plan.length - 1 %>
+                                      <i class="fa fa-solid fa-plus"></i>
+                                    <% end %>
+                                  <% end %>
+                                <% end %>
                               <% end %>
                               </div>
                               <div class="cal-card-day">
@@ -184,8 +259,19 @@
                                 <p><%= dates[7] %></p>
                               </div>
                               <div class="cal-card-img">
-                              <%= link_to recipe_meal_plans_path(@recipe), method: :post do %>
-                                <img src="" alt="">
+                              <%= link_to recipe_meal_plans_path(@recipe, date: dates[7], day: day[7]), method: :post do %>
+                                <% if @meal_plan.empty? %>
+                                  <i class="fa fa-solid fa-plus"></i>
+                                <% else %>
+                                  <% @meal_plan.each_with_index do |meal_plan, index| %>
+                                    <% if meal_plan.date.strftime("%d").to_i == dates[7] %>
+                                      <%= image_tag(Recipe.find(meal_plan.recipe_id).image_url) %>
+                                      <% break %>
+                                    <% elsif index == @meal_plan.length - 1 %>
+                                      <i class="fa fa-solid fa-plus"></i>
+                                    <% end %>
+                                  <% end %>
+                                <% end %>
                               <% end %>
                               </div>
                               <div class="cal-card-day">
@@ -200,8 +286,19 @@
                                 <p><%= dates[8] %></p>
                               </div>
                               <div class="cal-card-img">
-                              <%= link_to recipe_meal_plans_path(@recipe), method: :post do %>
-                                <img src="" alt="">
+                              <%= link_to recipe_meal_plans_path(@recipe, date: dates[8], day: day[8]), method: :post do %>
+                                <% if @meal_plan.empty? %>
+                                  <i class="fa fa-solid fa-plus"></i>
+                                <% else %>
+                                  <% @meal_plan.each_with_index do |meal_plan, index| %>
+                                    <% if meal_plan.date.strftime("%d").to_i == dates[8] %>
+                                      <%= image_tag(Recipe.find(meal_plan.recipe_id).image_url) %>
+                                      <% break %>
+                                    <% elsif index == @meal_plan.length - 1 %>
+                                      <i class="fa fa-solid fa-plus"></i>
+                                    <% end %>
+                                  <% end %>
+                                <% end %>
                               <% end %>
                               </div>
                               <div class="cal-card-day">
@@ -227,8 +324,7 @@
                 </div>
 
                 <div class="modal-footer justify-content-between">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-outline-success">Confirm</button>
+                  <a href="<%= recipe_path(@recipe) %>" class="button-close"> Close </a>
                 </div>
               </div>
             </div>
