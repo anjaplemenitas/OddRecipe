@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post 'recipes/:id/like', to: 'recipes#like'
 
   resources :recipes, only: %i[index new show edit update destroy] do
-    resources :ratings, only: %i[new edit update destroy]
+    resources :reviews, only: %i[new create edit update destroy]
 
     resources :meal_plans, only: %i[create]
   end

@@ -14,13 +14,22 @@ puts "Making the bosses!"
 
 ['al@boss.com', 'anja@boss.com', 'alex@boss.com'].each do |user|
   User.create(
-    first_name: "First",
-    last_name: "Last",
+    first_name: user[0..-10].capitalize,
+    last_name: Faker::Name.last_name,
     email: user,
     password: 'password'
   )
 
   puts "Boss #{user} made!"
+end
+
+7.times do
+  User.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: 'password'
+  )
 end
 
 puts "---------------------------" * 2
@@ -115,9 +124,9 @@ puts "Creating Reviews"
 
 150.times do
   review = Review.new(
-    content: Faker::Quote.famous_last_words,
+    content: Faker::Restaurant.review,
     rating: rand(1..5),
-    user_id: rand(1..3),
+    user_id: rand(1..10),
     recipe_id: rand(1..24)
   )
   review.save
