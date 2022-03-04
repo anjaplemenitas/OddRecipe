@@ -53,8 +53,10 @@
                                 <p><%= dates[0] %></p>
                               </div>
                               <div class="cal-card-img">
-                              <%= link_to recipe_meal_plans_path(@recipe), method: :post do %>
-                                <img src="" alt="">
+                              <%= link_to recipe_meal_plans_path(@recipe, date: dates[0], day: day[0]), method: :post do %>
+                                <% unless @meal_plan[0].nil? %>
+                                  <%= image_tag(Recipe.find(@meal_plan[0].recipe_id).image_url) %>
+                                <% end %>
                               <% end %>
                               </div>
                               <div class="cal-card-day">
@@ -246,7 +248,9 @@
         <div class="recipe-sub">
           <h4>Substitutes:</h4>
             <ul class="recipe-sub-li">
-              <li> <%= @recipe.substitute %> </li>
+              <% @recipe.method.gsub("[", "").gsub("]", "").gsub(/\\/, "").split("\",").each do |sub| %>
+                <li><%= sub.gsub("\"", "") if sub.include?("?") %></li>
+              <% end %>
             </ul>
         </div>
       </div>
@@ -258,7 +262,13 @@
         <br>
           <div class="recipe-meth">
             <h4>Recipe:</h4>
-            <p><%= @recipe.method %></p>
+              <ul>
+                <% @recipe.method.gsub("[", "").gsub("]", "").gsub(/\\/, "").split("\",").each do |sub| %>
+                  <% unless sub.include?("?") %>
+                    <li><%= sub.gsub("\"", "") %></li>
+                  <% end %>
+                <% end %>
+              </ul>
           </div>
           <br>
             <div class="recipe-stor">
