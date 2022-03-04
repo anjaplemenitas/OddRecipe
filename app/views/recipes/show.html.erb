@@ -53,7 +53,7 @@
                                 <p><%= dates[0] %></p>
                               </div>
                               <div class="cal-card-img">
-                              <%= link_to recipe_meal_plans_path(@recipe), method: :post do %>
+                              <%= link_to recipe_meal_plans_path(@recipe, date: dates[0], day: day[0]), method: :post do %>
                                 <img src="" alt="">
                               <% end %>
                               </div>
