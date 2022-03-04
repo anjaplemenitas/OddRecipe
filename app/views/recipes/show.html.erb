@@ -54,7 +54,9 @@
                               </div>
                               <div class="cal-card-img">
                               <%= link_to recipe_meal_plans_path(@recipe, date: dates[0], day: day[0]), method: :post do %>
-                                <img src="" alt="">
+                                <% unless @meal_plan[0].nil? %>
+                                  <%= image_tag(Recipe.find(@meal_plan[0].recipe_id).image_url) %>
+                                <% end %>
                               <% end %>
                               </div>
                               <div class="cal-card-day">

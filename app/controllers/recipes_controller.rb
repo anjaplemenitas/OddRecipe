@@ -12,6 +12,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @meal_plan = MealPlan.where(user_id: current_user.id)
   end
 
   def update

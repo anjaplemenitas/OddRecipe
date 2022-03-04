@@ -6,7 +6,7 @@ class MealPlansController < ApplicationController
     @meal_plan.user_id = current_user.id
     @meal_plan.date = Date.new(2022, 3, params["date"].to_i)
     if @meal_plan.save
-      redirect_to user_path(current_user), notice: "#{@recipe.name} has been added"
+      redirect_to recipes_path, notice: "#{@recipe.name} has been added"
     else
       render 'recipes/show'
     end
