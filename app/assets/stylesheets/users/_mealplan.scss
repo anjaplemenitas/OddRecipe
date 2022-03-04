@@ -1,4 +1,6 @@
 .meal-plan-show {
+  position: relative;
+
 
   h1 {
     font-size: 38px;
@@ -7,11 +9,18 @@
     margin-top: 10px;
   }
 
+  .name-month {
+    text-align: center;
+    margin-bottom: 1px;
+    font-size: 20px;
+    color: #F2B63E;
+  }
+
   .date-meal-plan{
     font-size: 22px;
     text-align: center;
     color: #000000;
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   .stars-meal-plan {
@@ -68,7 +77,40 @@
     text-decoration: none;
   }
 
-  .carousel-item .row{
+  .date-show{
     display: flex;
+    gap: 37px;
+    justify-content: center;
+  }
+
+  .number-btn{
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border: 2px #F2B63E solid;
+    min-height: 35px;
+    max-height: 35px;
+    min-width: 35px;
+    max-width: 35px;
+
+    .checked {
+      color: #F2B63E;
+    }
+  }
+
+  .arrow-r {
+    color: black;
+    font-size: 25px;
+    position: absolute;
+    top: 45px;
+    left: 22px;
+  }
+
+  .arrow-l {
+    color: black;
+    font-size: 25px;
+    position: absolute;
+    top: 45px;
+    right: 22px;
   }
 }

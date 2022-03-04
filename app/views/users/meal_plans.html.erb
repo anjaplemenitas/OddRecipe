@@ -5,6 +5,55 @@
 <% 20.times do |i| %>
 <% dates << ((Date.today + i).strftime("%d")).to_i %>
 <% end %>
+
+<% dates_name = [] %>
+<% dates.each_with_index do |date, index| %>
+  <% dates_name << Date::DAYNAMES[Date.new(2022, 03, date).wday]%>
+<% end %>
+
+<p class="name-month">March</p>
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+  <div class="carousel-inner">
+
+
+<% dates_name.each_with_index do |name, index| %>
+    <% if index == 0 %>
+      <div class="carousel-item active">
+        <div class="row">
+          <div class=" date-show col-12">
+    <% end %>
+
+    <% if [4, 8, 12, 16].include?(index) %>
+      <div class="carousel-item">
+        <div class="row">
+          <div class=" date-show col-12">
+    <% end %>
+
+    <p class="name-day" style="d-flex text-size: 5px"><%= name.upcase[0, 3]  %></p>
+
+    <% if [3, 7, 11, 15, 19].include?(index) %>
+        </div>
+      </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#multi-item-example" data-bs-slide="prev">
+    <i class="arrow-l carousel-control-prev-icon fa fa-solid fa-angle-left"></i>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#multi-item-example" data-bs-slide="next">
+    <i class="arrow-r carousel-control-next-icon fa fa-solid fa-angle-right"></i>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+
+
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
   <div class="carousel-inner">
 
@@ -12,24 +61,30 @@
     <% if index == 0 %>
       <div class="carousel-item active">
         <div class="row">
-            <div class="col-5 dates_row">
+          <div class=" date-show col-12">
     <% end %>
+
     <% if [4, 8, 12, 16].include?(index) %>
       <div class="carousel-item">
         <div class="row">
-          <div class="col-5 dates_row">
+          <div class=" date-show col-12">
     <% end %>
+
+
     <%= form_tag user_meal_plan_path, method: :get do %>
       <%= hidden_field_tag 'date', "#{date}" %>
-      <%= submit_tag "#{date}", class: "btn btn-primary", style: 'border-radius: 50%' %>
+      <%= submit_tag "#{date}", class: "number-btn" %>
     <% end %>
+
+
     <% if [3, 7, 11, 15, 19].include?(index) %>
         </div>
       </div>
       </div>
     <% end %>
   <% end %>
-  </div>
+</div>
+
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
