@@ -10,4 +10,8 @@ class User < ApplicationRecord
   has_one :oddbox
 
   acts_as_favoritor
+
+  def meal_plan
+    MealPlan.where(user_id: current_user.id).sort_by(&:date)
+  end
 end
