@@ -1,0 +1,38 @@
+.odd-show-head {
+  background-color: white;
+  height: 620px;
+  font-family: 'Inter', sans-serif;
+  h2 {
+    font-weight: 700;
+    font-size: 26pt;
+  }
+  h5 {
+    font-weight: 600;
+    font-size: 10pt;
+  }
+  p {
+    font-weight: 400;
+    font-size: 8pt;
+    margin-bottom: 0;
+    padding-right: 20px;
+  }
+  img {
+    width: 105px;
+  }
+}
+
+h2 {
+  color: #2E5A36;
+}
+
+.odd-show-head-contents {
+  padding: 16px;
+  border: solid #F2B63E 5px;
+  border-radius: 3px;
+  width: 87vw;
+}
+
+#user-show-mini-head {
+  font-weight: 300;
+  font-size: 16pt;
+}

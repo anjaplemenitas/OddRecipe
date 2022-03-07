@@ -1,24 +1,23 @@
-<div class="container d-flex flex-column" style="background-color: white; height: 620px; font-family: 'Inter', sans-serif;
- font-family: 'Inter', sans-serif;">
+<div class="container d-flex flex-column odd-show-head">
   <div class="d-flex align-items-center flex-column">
     <div class="d-flex flex-column align-items-center py-2">
-      <h2 style="color: #2E5A36; font-weight: 700; font-size: 26pt;">OddBox</h2>
+      <h2>OddBox</h2>
     </div>
-    <div class="d-flex" style="padding: 16px; border: solid #F2B63E 5px; border-radius: 3px; width: 87vw;">
+    <div class="d-flex odd-show-head-contents">
       <div>
-        <h5 style="font-weight: 600; font-size: 10pt;">Box contents:</h5>
+        <h5>Box contents:</h5>
         <% ings = @oddbox.ingredients.map(&:name).join(", ") %>
-        <p style="font-weight: 400; font-size: 8pt; margin-bottom: 0; padding-right: 20px;"><%= ings %></p>
+        <p><%= ings %></p>
       </div>
       <div class="d-flex flex-column justify-content-between">
-        <h5 style="font-weight: 600; font-size: 10pt;"><%= @oddbox.name %></h5>
-        <%= image_tag("med_oddbox.png", style: "width: 105px;") %>
+        <h5><%= @oddbox.name %></h5>
+        <%= image_tag("med_oddbox.png") %>
       </div>
     </div>
   </div>
   <div class="d-flex flex-column py-2">
     <div class="align-self-center">
-      <h2 class="my-2" style="color: #2E5A36; font-weight: 300; font-size: 16pt;">Top 5 recipes this week:</h2>
+      <h2 class="my-2" id="user-show-mini-head">Top 5 recipes this week:</h2>
     </div>
     <% @oddbox.recipes.each do |recipe| %>
       <%= link_to recipe_path(recipe) do %>

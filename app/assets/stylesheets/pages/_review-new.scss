@@ -1,0 +1,26 @@
+.review-head {
+  color: #2E5A36;
+  font-weight: 700;
+  h2 {
+    font-size: 26pt;
+  }
+  h3 {
+    font-size: 18pt;
+    text-align: center;
+  }
+  div {
+    height: 150px;
+    width: 83vw;
+  }
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 285px;
+  }
+}
+
+.review-card {
+  height: auto;
+  flex-grow: 1;
+  align-items: start;
+}
