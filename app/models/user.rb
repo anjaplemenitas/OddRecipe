@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   acts_as_favoritor
 
-  def meal_plan
-    MealPlan.where(user_id: current_user.id).sort_by(&:date)
+  def meal_plan(user)
+    MealPlan.where(user_id: user.id).sort_by(&:date)
   end
 end
