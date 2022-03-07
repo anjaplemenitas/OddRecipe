@@ -120,7 +120,7 @@
       <% recipe = Recipe.find(meal) %>
       <%= link_to recipe_path(meal) do %>
           <div class="card-product">
-            <img src="https://images.prismic.io/oddbox/35c3f3e2-e7a0-41f9-95b0-c20bb4aaaa50_IMG_7594.JPG?ixlib=gatsbyFP&auto=compress%2Cformat&fit=max&q=50&w=1446&h=2298" alt="">
+            <%= image_tag(Recipe.find(meal).image_url) %>
             <div class="text-recipe">
               <div class="card-product-infos">
                 <h2><%= recipe.name %></h2>
