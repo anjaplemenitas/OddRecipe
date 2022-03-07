@@ -1,9 +1,9 @@
 <div class="container">
-  <div class="d-flex flex-column align-items-center py-2">
-      <h2 style="color: #2E5A36; font-weight: 700; font-size: 26pt;">Reviews</h2>
-      <h3 style="color: #2E5A36; font-weight: 700; font-size: 18pt; text-align: center;"><%= @recipe.name %></h3>
-      <div class="container" style="height: 150px; width: 83vw;">
-        <%= image_tag(@recipe.image_url, style: "object-fit: cover; height: 100%; width: 285px;") %>
+  <div class="review-head d-flex flex-column align-items-center py-2">
+      <h2>Reviews</h2>
+      <h3><%= @recipe.name %></h3>
+      <div class="container">
+        <%= image_tag(@recipe.image_url) %>
       </div>
   </div>
   <div class="container">
@@ -15,7 +15,7 @@
   </div>
   <div class="container mt-5 meal-plan-show">
     <% @recipe.reviews.sort_by(&:created_at).reverse.each do |review| %>
-      <div class="card-product flex-column p-2" id="review-<%= review.id %>" style="height: auto; flex-grow: 1; align-items: start;">
+      <div class="card-product flex-column p-2 review-card" id="review-<%= review.id %>">
         <div class="container d-flex flex-column">
           <h2><%= User.find(review.user_id).first_name %>
             <% 5.times do |x| %>

@@ -1,24 +1,24 @@
 
-<div class="container" style="background-color: white; height: 620px;">
+<div class="container user-show-bg">
   <div class="d-flex flex-column align-items-center justify-content-between pt-3">
-    <%= link_to recipes_path, style: "text-decoration: none; color: black;" do %>
-      <h2 class="py-3 my-4" style="font-weight: 600; font-family: 'Inter', sans-serif; border: solid #F2B63E 5px; border-radius: 3px; width: 87vw; text-align: center;" >Recipes</h2>
+    <%= link_to recipes_path, class: "user-show-link" do %>
+      <h2 class="py-3 my-4 user-show-head" >Recipes</h2>
     <% end %>
 
     <% unless current_user.oddbox.nil? %>
-      <%= link_to oddbox_path(@oddbox), style: "text-decoration: none; color: black;" do %>
-        <h2 class="py-3 my-4" style="font-weight: 600; font-family: 'Inter', sans-serif; border: solid #F2B63E 5px; border-radius: 3px; width: 87vw; text-align: center;" >OddBox</h2>
+      <%= link_to oddbox_path(@oddbox), class: "user-show-link" do %>
+        <h2 class="py-3 my-4 user-show-head" >OddBox</h2>
       <% end %>
     <% end %>
 
-    <h2 class="py-3 my-4" style="font-weight: 600; font-family: 'Inter', sans-serif; border: solid #F2B63E 5px; border-radius: 3px; width: 87vw; text-align: center;">Shopping List</h2>
+    <h2 class="py-3 my-4 user-show-head">Shopping List</h2>
 
-    <%= link_to user_meal_plan_path(current_user), style: "text-decoration: none; color: black;" do %>
-      <h2 class="py-3 my-4" style="font-weight: 600; font-family: 'Inter', sans-serif; border: solid #F2B63E 5px; border-radius: 3px; width: 87vw; text-align: center;">Calendar</h2>
+    <%= link_to user_meal_plan_path(current_user), class: "user-show-link" do %>
+      <h2 class="py-3 my-4 user-show-head">Calendar</h2>
     <% end %>
 
-    <%= link_to user_oddbook_path(current_user), style: "text-decoration: none; color: black;" do %>
-      <h2 class="py-3 my-4" style="font-weight: 600; font-family: 'Inter', sans-serif; border: solid #F2B63E 5px; border-radius: 3px; width: 87vw; text-align: center;" >OddBook</h2>
+    <%= link_to user_oddbook_path(current_user), class: "user-show-link" do %>
+      <h2 class="py-3 my-4 user-show-head" >OddBook</h2>
     <% end %>
   </div>
 </div>
