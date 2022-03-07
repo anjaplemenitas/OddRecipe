@@ -129,6 +129,7 @@
               <div class="card-product-infos">
                 <h2><%= recipe.name %></h2>
                 <p>Total time: <%= recipe.cooking_time %></p>
+                <%# <i class="fa fa-solid fa-xmark"></i> %>
               </div>
               <div class="stars-meal-plan">
                 <p><% review = Review.find(recipe.id) %></p>
