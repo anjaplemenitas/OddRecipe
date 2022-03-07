@@ -78,7 +78,7 @@ i.red {
 .recipe-ing {
   margin-left: 8px;
   margin-top: 15px;
-  border: solid 3px green;
+  border: solid 3px #2E5A36;
   border-radius: 8px;
   padding: 6px 6px 0px 6px;
 
@@ -90,7 +90,7 @@ i.red {
 
 /*drop down start */
 .dropbtn {
-  background-color: darkgreen;
+  background-color: #2E5A36;
   color: white;
   width: 100%;
   font-size: 20px;
@@ -107,10 +107,10 @@ a:hover{
   position: relative;
   display: inline-block;
   width: 100%;
-  background-color: darkgreen;
+  background-color: #2E5A36;
   color: white;
   border-radius: 8px;
-  padding-left: 5px;
+  padding: 3px 0px 3px 5px;
 }
 
 .dropdown-content{
@@ -144,28 +144,28 @@ a:hover{
 
 
 .recipe-desc {
-  border: solid 3px green;
+  border: solid 3px #2E5A36;
   border-radius: 8px;
   margin: 0px 8px 0px 8px;
   padding: 6px 6px 0px 6px;
 }
 
 .recipe-meth {
-  border: solid 3px green;
+  border: solid 3px #2E5A36;
   border-radius: 8px;
   margin: 0px 8px 0px 8px;
   padding: 6px 6px 0px 6px;
 }
 
 .recipe-stor {
-  border: solid 3px green;
+  border: solid 3px #2E5A36;
   border-radius: 8px;
   margin: 0px 8px 0px 8px;
   padding: 6px 6px 0px 6px;
 }
 
 .recipe-leftover {
-  border: solid 3px green;
+  border: solid 3px #2E5A36;
   border-radius: 8px;
   margin: 0px 8px 0px 8px;
   padding: 6px 6px 0px 6px;
@@ -274,7 +274,7 @@ a:hover{
 
 .modal-footer {
   border-top: none;
-  background-color: darkgreen;
+  background-color: #2E5A36;
   padding: 0.15rem;
 }
 
@@ -287,6 +287,21 @@ a:hover{
 
   .modal-title {
     margin-bottom: 12px;
+
+    h4 {
+      font-family: 'Odd-Medium';
+      font-size: 40px;
+      color: #2E5A36;
+    }
+  }
+
+  .modal-sub-title {
+    font-family: 'Interstate-regular';
+    color: #F2B63E;
+
+    h6 {
+      font-size: 1.3rem;
+    }
   }
 
 }
