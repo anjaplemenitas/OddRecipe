@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
     @recipes = @recipes.where('name ILIKE ?', "%#{params[:query]}%") if params[:query].present?
 
     respond_to do |format|
-      format.html # Follow regular flow of Rails
+      format.html
       format.text { render partial: 'recipes/list', locals: { recipes: @recipes }, formats: [:html] }
     end
   end

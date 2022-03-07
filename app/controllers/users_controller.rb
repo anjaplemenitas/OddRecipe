@@ -16,5 +16,15 @@ class UsersController < ApplicationController
 
   def oddbook
     @recipes = current_user.all_favorited
+    # This will convert @reciepes from an array to an ActiveRecord_Relation
+    # which is needed to run SQL queries on
+    @recipes = Recipe.where(id: @recipes.map(&:id))
+
+    @recipes = @recipes.where('name ILIKE ?', "%#{params[:query]}%") if params[:query].present?
+
+    respond_to do |format|
+      format.html
+      format.text { render partial: 'recipes/list', locals: { recipes: @recipes }, formats: [:html] }
+    end
   end
 end
