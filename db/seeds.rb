@@ -20,7 +20,7 @@ puts "Making the bosses!"
     password: 'password'
   )
 
-  puts "Boss #{user} made!"
+  puts "Boss #{user[0..-10].capitalize} made!"
 end
 
 7.times do
@@ -32,7 +32,7 @@ end
   )
 end
 
-puts "---------------------------" * 2
+puts "---------------------------"
 
 puts "Creating Medium Oddbox!"
 
@@ -64,6 +64,7 @@ ingredients = []
 ing_quantity = []
 
 urls.each do |url|
+  print "."
   temp_noko = Nokogiri::HTML(URI.open("https://www.oddbox.co.uk#{url}"))
   temp_ingredients = temp_noko.search(".recipe__ingredients p").map do |ing|
     x = ing.text.match(/^(?<amount>\w?\d*\W?\s*(g|ml|tbsp|tsp)?)?\s*(?<ing>[a-zA-Z]\s?[a-z]*(-|\s)?[a-zA-Z|&]*\s?([a-zA-Z]*|$?)\s?(flakes)?)$?(?<extra>\(.*\))?$?/)
@@ -83,6 +84,8 @@ urls.each do |url|
 
   method << temp_method
 end
+
+puts ""
 
 ind_ing = ingredients.join(", ").split(", ").sort.uniq
 
@@ -104,7 +107,7 @@ puts "Creating Medium Oddbox Ingredients!"
   OddboxIngredient.create(oddbox_id: 1, ingredient_id: Ingredient.find_by(name: ing).id)
 end
 
-puts "---------------------------" * 2
+puts "---------------------------"
 
 names.each_with_index do |name, index|
   recipe = Recipe.new(
@@ -124,12 +127,12 @@ names.each_with_index do |name, index|
     RecipeIngredient.create(
       recipe_id: recipe.id,
       ingredient_id: Ingredient.find_by(name: ing).id,
-      amount: ing_quantity[index][i]
+      quantity: ing_quantity[index][i]
     )
   end
 end
 
-puts "---------------------------" * 2
+puts "---------------------------"
 
 puts "Creating Reviews"
 
