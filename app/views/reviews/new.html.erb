@@ -9,7 +9,7 @@
   <div class="container">
     <%= simple_form_for [@recipe, @review] do |f| %>
       <%= f.input :content, label: "Leave a review" %>
-      <%= f.input :rating, label: "Rating / 5", collection: (1..5).to_a %>
+      <%= f.input :rating, label: "Rate this recipe", collection: (1..5).to_a %>
       <%= f.submit "Submit" %>
     <% end %>
   </div>
@@ -19,7 +19,7 @@
         <div class="container d-flex flex-column">
           <h2><%= User.find(review.user_id).first_name %>
             <% 5.times do |x| %>
-              <% if x < @recipe.rating %>
+              <% if x < review.rating %>
                 <li class="fa fa-star checked"></li>
               <% else %>
                 <li class="fa fa-star"></li>
