@@ -10,7 +10,7 @@
     </div>
     <div class="recipe-card-links">
       <div class="recipe-time">
-        <p> Total Time: <%= @recipe.cooking_time %> minutes </p>
+        <p> <i class="far fa-clock"></i> <%= @recipe.cooking_time %> mins </p>
           <ul class="recipe-stars"> <% 5.times do |x| %>
             <% if x < @recipe.rating %>
               <li class="fa fa-star checked"> </li>
