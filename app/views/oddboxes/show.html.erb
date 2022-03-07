@@ -1,4 +1,4 @@
-<div class="container d-flex flex-column odd-show-head">
+<div class="container d-flex flex-column odd-show-head pb-5">
   <div class="d-flex align-items-center flex-column">
     <div class="d-flex flex-column align-items-center py-2">
       <h2>OddBox</h2>
@@ -15,6 +15,26 @@
       </div>
     </div>
   </div>
+
+  <div class="box-storing" data-controller="dropdown">
+    <div class="dropdown-store-veg">
+      <a class="dropbtn" data-action="click->dropdown#toggleSubstitutes"> <i class="fa fa-caret-down"></i> How to store box content </a>
+      <div id="myDropdown" class="dropdown-content" data-dropdown-target="dropdown">
+        <ul class="recipe-sub-li">
+        <p><strong>Avocado:</strong> Until they're fully ripe, avocados should be stored at room temperature. Ripe avocados: put them in the refrigerator to keep them at their prime ripeness for longer.</p>
+        <p><strong>Beetroots:</strong> Store beets in the refrigerator placed in a perforated plastic bag in the vegetable crisper drawer.</p>
+        <p><strong>Cavolo nero:</strong> Keep it in a cool, dark place or the vegetable drawer of the fridge for several days.</p>
+        <p><strong>Brussels sprouts:</strong> Store in a plastic bag in the crisper drawer of the refrigerator.</p>
+        <p><strong>Carrots:</strong> Should be kept loose in the vegetable drawer of your fridge. Shrivelled or 'rubbery' carrots can be 'revived' by soaking in cold water. If your carrots come with the leaves intact, cut these off before storing.</p>
+        <p><strong>Cucumbers:</strong> The best way to store cut cucumbers is to wrap them in a damp paper towel and place them in an airtight storage container.</p>
+        <p><strong>Ginger:</strong> Refrigerate fresh, whole, unpeeled ginger in an airtight plastic bag in the crisper drawer.</p>
+        <p><strong>Limes:</strong> Store lime is in the refrigerator in the crisper drawer if you have one.</p>
+        <p><strong>Mango:</strong> Unripe mangoes in a dark, room temperature container. Once ripe, mangos should be moved to the refrigerator, which will slow down the ripening process.</p>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <div class="d-flex flex-column py-2">
     <div class="align-self-center">
       <h2 class="my-2" id="user-show-mini-head">Top 5 recipes this week:</h2>
