@@ -13,7 +13,7 @@
 
 <p class="name-month">March</p>
 
-  <div class="carousel">
+  <div class="carousel" data-controller="meal-plan">
     <div class="month-names-carousel">
       <div id="carouselExampleControls" class="carousel slide month" data-bs-ride="carousel" data-bs-interval="false">
         <div class="carousel-inner">
@@ -43,16 +43,16 @@
       </div>
 
 
-        <div class="carousel-control prev1 d-none" data-bs-target="#carouselExampleControls" data-bs-slide="prev"></div>
-        <div class="carousel-control-next next1 d-none" data-bs-target="#carouselExampleControls" data-bs-slide="next"></div>
+        <div class="carousel-control prev1 d-none" data-meal-plan-target="prev1" data-bs-target="#carouselExampleControls" data-bs-slide="prev"></div>
+        <div class="carousel-control-next next1 d-none" data-meal-plan-target="next1" data-bs-target="#carouselExampleControls" data-bs-slide="next"></div>
       </div>
     </div>
 
-        <button class="c-prev carousel-control-prev" type="button">
+        <button class="c-prev carousel-control-prev" type="button" data-meal-plan-target="cprev" data-action="click->meal-plan#prev">
           <i class="c-prev arrow-l fa fa-solid fa-angle-left"></i>
         </button>
 
-        <button class="c-next carousel-control-next" type="button">
+        <button class="c-next carousel-control-next" type="button" data-meal-plan-target="cnext" data-action="click->meal-plan#next">
           <i class="c-next arrow-r fa fa-solid fa-angle-right"></i>
         </button>
 
@@ -93,8 +93,8 @@
           <% end %>
         <% end %>
       </div>
-        <div class="carousel-control prev2  d-none" data-bs-target="#carouselExampleControls1" data-bs-slide="prev"></div>
-        <div class="carousel-control-next next2  d-none" data-bs-target="#carouselExampleControls1" data-bs-slide="next"></div>
+        <div class="carousel-control prev2  d-none" data-meal-plan-target="prev2" data-bs-target="#carouselExampleControls1" data-bs-slide="prev"></div>
+        <div class="carousel-control-next next2  d-none" data-meal-plan-target="next2" data-bs-target="#carouselExampleControls1" data-bs-slide="next"></div>
       </div>
     </div>
   </div>
