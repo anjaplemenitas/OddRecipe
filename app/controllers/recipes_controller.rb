@@ -25,7 +25,12 @@ class RecipesController < ApplicationController
 
     @recipe.favorited_by?(current_user) ? current_user.unfavorite(@recipe) : current_user.favorite(@recipe)
 
-    redirect_to recipe_path(@recipe)
+    redirect_to recipe_path(@recipe), notice:
+      if @recipe.favorited_by?(current_user)
+        "#{@recipe.name} added to your ODDBOOK"
+      else
+        "#{@recipe.name} removed from your ODDBOOK"
+      end
   end
 
   private
