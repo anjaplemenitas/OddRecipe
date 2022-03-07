@@ -1,20 +1,24 @@
 .odd-show-head {
   background-color: white;
   height: 620px;
-  font-family: 'Inter', sans-serif;
+
   h2 {
     font-weight: 700;
     font-size: 26pt;
+    font-family: 'Odd-Medium';
+    padding-top: 10px;
   }
   h5 {
     font-weight: 600;
     font-size: 10pt;
+    font-family: 'Interstate-regular';
   }
   p {
     font-weight: 400;
     font-size: 8pt;
     margin-bottom: 0;
     padding-right: 20px;
+    font-family: 'Interstate-light';
   }
   img {
     width: 105px;
@@ -35,4 +39,54 @@ h2 {
 #user-show-mini-head {
   font-weight: 300;
   font-size: 16pt;
+}
+
+//dropdown
+.dropdown-store-veg {
+  position: relative;
+  display: inline-block;
+  width: 91%;
+  background-color: #f2b63e;
+  color: white;
+  border-radius: 5px;
+  padding-left: 10px;
+  margin: 15px;
+  font-family: 'Interstate-light';
+
+  .dropbtn {
+    background-color: #f2b63e;
+    color: black;
+    width: 100%;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  a:hover{
+  color: white !important;
+  }
+  .dropdown-content{
+    text-decoration: none;
+    display: block;
+  }
+  #myDropdown {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.8s ease;
+  }
+
+  .dropdown-show {
+    max-height: 500px !important;
+  }
+
+  .show {display:block;}
+
+  p {
+    font-family: 'Interstate-light';
+
+  strong {
+    font-family: 'Interstate-regular';
+  }
+  }
 }
