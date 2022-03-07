@@ -27,4 +27,8 @@ class UsersController < ApplicationController
       format.text { render partial: 'recipes/list', locals: { recipes: @recipes }, formats: [:html] }
     end
   end
+
+  def shopping_list
+
+  end
 end
