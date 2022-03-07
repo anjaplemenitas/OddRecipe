@@ -6,12 +6,12 @@ class UsersController < ApplicationController
   def meal_plans
     @user = current_user
     if params[:previous_date].present? && params[:previous_date] == params[:date]
-      @meal_plan = MealPlan.where(user_id: @user.id).sort_by(&:date)
+      @meal_plan = @user.meal_plan(@user)
     elsif params[:date].present?
       date = Date.new(2022, 03, params[:date].to_i)
       @meal_plan = MealPlan.where(date: date)
     else
-      @meal_plan = MealPlan.where(user_id: @user.id).sort_by(&:date)
+      @meal_plan = @user.meal_plan(@user)
     end
   end
 
@@ -27,5 +27,10 @@ class UsersController < ApplicationController
       format.html
       format.text { render partial: 'recipes/list', locals: { recipes: @recipes }, formats: [:html] }
     end
+  end
+
+  def shopping_list
+    @odd_ingredients = current_user.oddbox.ingredients
+    @meal_plan = current_user.meal_plan(current_user)
   end
 end

@@ -1,0 +1,9 @@
+<% @meal_plan.each_with_index do |meal, i| %>
+  <% Recipe.find(meal.recipe_id).ingredients.each_with_index do |ingredients, index| %>
+    <% rec_ing = RecipeIngredient.where(recipe_id: meal.recipe_id) %>
+    <% if Recipe.find(meal.recipe_id).name != Recipe.find(@meal_plan[i - 1].recipe_id).name || i == 0 %>
+      <h2><%= Recipe.find(meal.recipe_id).name %></h2>
+    <% end %>
+    <p><%= rec_ing[index].quantity %> <%= ingredients.name %></p>
+  <% end %>
+<% end %>

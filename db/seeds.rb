@@ -20,7 +20,7 @@ puts "Making the bosses!"
     password: 'password'
   )
 
-  puts "Boss #{user} made!"
+  puts "Boss #{user[0..-10].capitalize} made!"
 end
 
 7.times do
@@ -32,7 +32,7 @@ end
   )
 end
 
-puts "---------------------------" * 2
+puts "---------------------------"
 
 puts "Creating Medium Oddbox!"
 
@@ -61,21 +61,31 @@ urls.compact!
 descriptions = []
 method = []
 ingredients = []
+ing_quantity = []
 
 urls.each do |url|
+  print "."
   temp_noko = Nokogiri::HTML(URI.open("https://www.oddbox.co.uk#{url}"))
   temp_ingredients = temp_noko.search(".recipe__ingredients p").map do |ing|
-    x = ing.text.match(/^\w?\d*\W?\s*(g|ml|tbsp|tsp)?\s*(?<ing>[a-zA-Z][a-z]*\s?[a-zA-Z|&]*\s?[a-zA-Z]*)/)
+    x = ing.text.match(/^(?<amount>\w?\d*\W?\s*(g|ml|tbsp|tsp)?)?\s*(?<ing>[a-zA-Z]\s?[a-z]*(-|\s)?[a-zA-Z|&]*\s?([a-zA-Z]*|$?)\s?([a-z]{6})?)$?(?<extra>\(.*\))?$?/)
     x['ing'].strip unless x['ing'].strip.nil?
   end
 
+  temp_ing_quantity = temp_noko.search(".recipe__ingredients p").map do |ing|
+    x = ing.text.match(/^(?<amount>\w?\d*\W?\s*(g|ml|tbsp|tsp)?)?\s*(?<ing>[a-zA-Z]\s?[a-z]*(-|\s)?[a-zA-Z|&]*\s?([a-zA-Z]*|$?)\s?([a-z]{6})?)$?(?<extra>\(.*\))?$?/)
+    x['amount'].strip unless x['amount'].strip.nil?
+  end
+
   ingredients << temp_ingredients
+  ing_quantity << temp_ing_quantity
   descriptions << temp_noko.search(".post__description p").text
 
   temp_method = temp_noko.search(".recipe__content li").map(&:text)
 
   method << temp_method
 end
+
+puts ""
 
 ind_ing = ingredients.join(", ").split(", ").sort.uniq
 
@@ -97,7 +107,7 @@ puts "Creating Medium Oddbox Ingredients!"
   OddboxIngredient.create(oddbox_id: 1, ingredient_id: Ingredient.find_by(name: ing).id)
 end
 
-puts "---------------------------" * 2
+puts "---------------------------"
 
 names.each_with_index do |name, index|
   recipe = Recipe.new(
@@ -113,12 +123,16 @@ names.each_with_index do |name, index|
 
   recipe.save
 
-  ingredients[index].each do |ing|
-    RecipeIngredient.create(recipe_id: recipe.id, ingredient_id: Ingredient.find_by(name: ing).id)
+  ingredients[index].each_with_index do |ing, i|
+    RecipeIngredient.create(
+      recipe_id: recipe.id,
+      ingredient_id: Ingredient.find_by(name: ing).id,
+      quantity: ing_quantity[index][i]
+    )
   end
 end
 
-puts "---------------------------" * 2
+puts "---------------------------"
 
 puts "Creating Reviews"
 

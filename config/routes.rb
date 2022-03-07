@@ -1,19 +1,19 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  # get 'user_root', to: redirect("users/:id")
 
-  resources :oddboxes, only: %i[show]
-  resources :users, only: %i[show]
-
-  get '/users/:id/meal_plan', to: 'users#meal_plans', as: 'user_meal_plan'
+  get 'users/:id/meal_plan', to: 'users#meal_plans', as: 'user_meal_plan'
   get 'users/:id/oddbook', to: 'users#oddbook', as: 'user_oddbook'
+  get 'users/:id/shoppinglist', to: 'users#shopping_list', as: 'user_shopping_list'
 
   get  'recipes/:id/like', to: 'recipes#like', as: 'like_recipe'
   post 'recipes/:id/like', to: 'recipes#like'
 
-  resources :recipes, only: %i[index new show edit update destroy] do
-    resources :reviews, only: %i[new create edit update destroy]
+  resources :oddboxes, only: %i[show]
+  resources :users, only: %i[show]
+
+  resources :recipes, only: %i[index show] do
+    resources :reviews, only: %i[new create]
 
     resources :meal_plans, only: %i[create]
   end
