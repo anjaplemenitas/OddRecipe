@@ -28,6 +28,11 @@
     right: 10px;
     bottom: 0;
     color: black;
+    margin-bottom: none;
+
+    .stars-index {
+      margin-bottom: 7px;
+    }
   }
 
   .card-product {
@@ -93,9 +98,9 @@
     min-width: 35px;
     max-width: 35px;
 
-    .checked {
-      color: #F2B63E;
-    }
+  }
+  .date-bg {
+    background-color: #F2B63E;
   }
 
   .arrow-r {
@@ -113,4 +118,11 @@
     top: 45px;
     right: 22px;
   }
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+
+}
+
 }
