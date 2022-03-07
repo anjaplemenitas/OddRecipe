@@ -3,7 +3,7 @@ import $ from 'jquery';
 
 const initStarRating = () => {
   $('#review_rating').barrating({
-    theme: 'css-stars'
+    theme: 'fontawesome-stars'
   });
 };
 
