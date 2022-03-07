@@ -13,89 +13,93 @@
 
 <p class="name-month">March</p>
 
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
-  <div class="carousel-inner">
+  <div class="carousel">
+    <div class="month-names-carousel">
+      <div id="carouselExampleControls" class="carousel slide month" data-bs-ride="carousel" data-bs-interval="false">
+        <div class="carousel-inner">
 
 
-<% dates_name.each_with_index do |name, index| %>
-    <% if index == 0 %>
-      <div class="carousel-item active">
-        <div class="row">
-          <div class=" date-show col-12">
-    <% end %>
+          <% dates_name.each_with_index do |name, index| %>
+          <% if index == 0 %>
+            <div class="carousel-item active">
+              <div class="row">
+                <div class=" date-show col-12">
+          <% end %>
 
-    <% if [4, 8, 12, 16].include?(index) %>
-      <div class="carousel-item">
-        <div class="row">
-          <div class=" date-show col-12">
-    <% end %>
+          <% if [4, 8, 12, 16].include?(index) %>
+            <div class="carousel-item">
+              <div class="row">
+                <div class=" date-show col-12">
+          <% end %>
 
-    <p class="name-day" style="d-flex text-size: 5px"><%= name.upcase[0, 3]  %></p>
+          <p class="name-day" style="d-flex text-size: 5px"><%= name.upcase[0, 3]  %></p>
 
-    <% if [3, 7, 11, 15, 19].include?(index) %>
-        </div>
+          <% if [3, 7, 11, 15, 19].include?(index) %>
+              </div>
+            </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
+
+
+        <div class="carousel-control prev1 d-none" data-bs-target="#carouselExampleControls" data-bs-slide="prev"></div>
+        <div class="carousel-control-next next1 d-none" data-bs-target="#carouselExampleControls" data-bs-slide="next"></div>
       </div>
-    <% end %>
-  <% end %>
-</div>
+    </div>
+
+        <button class="c-prev carousel-control-prev" type="button">
+          <i class="c-prev arrow-l fa fa-solid fa-angle-left"></i>
+        </button>
+
+        <button class="c-next carousel-control-next" type="button">
+          <i class="c-next arrow-r fa fa-solid fa-angle-right"></i>
+        </button>
+
+    <div class="numbers-month-carousel">
+      <div id="carouselExampleControls1" class="carousel slide numbers" data-bs-ride="carousel" data-bs-interval="false">
+        <div class="carousel-inner">
+
+        <% dates.each_with_index do |date, index| %>
+          <% if index == 0 %>
+            <div class="carousel-item active">
+              <div class="row">
+                <div class=" date-show col-12">
+          <% end %>
+
+          <% if [4, 8, 12, 16].include?(index) %>
+            <div class="carousel-item">
+              <div class="row">
+                <div class=" date-show col-12">
+          <% end %>
 
 
-  <button class="carousel-control-prev" type="button" data-bs-target="#multi-item-example" data-bs-slide="prev">
-    <i class="arrow-l carousel-control-prev-icon fa fa-solid fa-angle-left"></i>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#multi-item-example" data-bs-slide="next">
-    <i class="arrow-r carousel-control-next-icon fa fa-solid fa-angle-right"></i>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
+          <%= form_tag user_meal_plan_path, method: :get do %>
+            <%= hidden_field_tag 'date', "#{date}" %>
+            <%= hidden_field_tag 'previous_date', "#{params[:date]}" %>
+            <% if params[:previous_date] == params[:date] %>
+              <% date_bg = '' %>
+            <% elsif params[:date].to_i == date %>
+              <% date_bg = 'date-bg' %>
+            <% end %>
+            <%= submit_tag "#{date}", class: "number-btn #{ date_bg }" %>
+          <% end %>
 
 
-
-
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
-  <div class="carousel-inner">
-
-  <% dates.each_with_index do |date, index| %>
-    <% if index == 0 %>
-      <div class="carousel-item active">
-        <div class="row">
-          <div class=" date-show col-12">
-    <% end %>
-
-    <% if [4, 8, 12, 16].include?(index) %>
-      <div class="carousel-item">
-        <div class="row">
-          <div class=" date-show col-12">
-    <% end %>
-
-
-    <%= form_tag user_meal_plan_path, method: :get do %>
-      <%= hidden_field_tag 'date', "#{date}" %>
-      <%= submit_tag "#{date}", class: "number-btn" %>
-    <% end %>
-
-
-    <% if [3, 7, 11, 15, 19].include?(index) %>
-        </div>
+          <% if [3, 7, 11, 15, 19].include?(index) %>
+              </div>
+            </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
+        <div class="carousel-control prev2  d-none" data-bs-target="#carouselExampleControls1" data-bs-slide="prev"></div>
+        <div class="carousel-control-next next2  d-none" data-bs-target="#carouselExampleControls1" data-bs-slide="next"></div>
       </div>
-    <% end %>
-  <% end %>
-</div>
+    </div>
+  </div>
 
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-
-  <% date_counter = @meal_plan[0].date %>
+  <% date_counter = @meal_plan[0]&.date %>
   <% @meal_plan.each_with_index do |meal_plan, index| %>
     <% meal = meal_plan.recipe_id%>
     <div class = "date-meal-plan">
@@ -120,7 +124,7 @@
       <% recipe = Recipe.find(meal) %>
       <%= link_to recipe_path(meal) do %>
           <div class="card-product">
-            <img src="https://images.prismic.io/oddbox/35c3f3e2-e7a0-41f9-95b0-c20bb4aaaa50_IMG_7594.JPG?ixlib=gatsbyFP&auto=compress%2Cformat&fit=max&q=50&w=1446&h=2298" alt="">
+            <%= image_tag(Recipe.find(meal).image_url) %>
             <div class="text-recipe">
               <div class="card-product-infos">
                 <h2><%= recipe.name %></h2>
@@ -128,7 +132,7 @@
               </div>
               <div class="stars-meal-plan">
                 <p><% review = Review.find(recipe.id) %></p>
-                <ul class="stars-index"><% 5.times do |x| %>
+                <ul class="stars-index" ><% 5.times do |x| %>
                   <% if x < review.rating %>
                     <li class="fa fa-star checked"> </li>
                   <% else %>
@@ -142,4 +146,5 @@
         <% end %>
     <% end %>
   <% end %>
+
 </div>
