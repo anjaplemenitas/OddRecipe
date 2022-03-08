@@ -379,14 +379,22 @@
               </ul>
           </div>
           <br>
-            <div class="recipe-stor">
-              <h4>How to Store:</h4>
-              <p><%= @recipe.storage %></p>
+            <div class="recipe-stor" data-controller="dropdown">
+              <div class="dropdown">
+                <a class="dropbtn" data-action="click->dropdown#toggleSubstitutes"> <i class="fa fa-caret-down"></i> How to Store </a>
+                <div id="myDropdown" class="dropdown-content" data-dropdown-target="dropdown">
+                  <p><%= @recipe.storage %></p>
+                </div>
+              </div>
             </div>
             <br>
-              <div class="recipe-leftover">
-                <h4>Leftovers:</h4>
-                <p><%= @recipe.leftover %></p>
+              <div class="recipe-leftover" data-controller="dropdown">
+                <div class="dropdown">
+                  <a class="dropbtn" data-action="click->dropdown#toggleSubstitutes"> <i class="fa fa-caret-down"></i> Leftovers </a>
+                  <div id="myDropdown" class="dropdown-content" data-dropdown-target="dropdown">
+                    <p><%= @recipe.leftover %></p>
+                  </div>
+                </div>
               </div>
               <br>
                 <div class="recipe-review-btn">
