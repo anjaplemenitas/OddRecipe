@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="padding: 0;">
   <div class="recipe-header">
     <h1><%= @recipe.name %></h1>
   </div>
@@ -398,30 +398,53 @@
                   <button class="button-review"><%= link_to "Leave a review", new_recipe_review_path(@recipe)%></button>
                 </div>
 
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-            <div class="container mt-5 meal-plan-show">
-              <% @recipe.reviews.sort_by(&:created_at).reverse.each do |review| %>
-                <div class="card-product flex-column p-2 review-card" id="review-<%= review.id %>">
-                  <div class="container d-flex flex-column">
-                    <h2><%= User.find(review.user_id).first_name %>
-                      <% 5.times do |x| %>
-                        <% if x < review.rating %>
-                          <li class="fa fa-star checked"></li>
-                        <% else %>
-                          <li class="fa fa-star"></li>
-                        <% end %>
-                      <% end %>
-                    </h2>
-                  </div>
-                  <div class="container p-2">
-                    <p><%= review.content %></p>
-                  </div>
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <% review = @recipe.reviews.first %>
+                    <div class="container mt-5 meal-plan-show">
+                      <div class="card-product flex-column p-2 review-card" id="review-<%= review.id %>">
+                          <div class="container d-flex flex-column">
+                            <h2><%= User.find(review.user_id).first_name %>
+                                <% 5.times do |x| %>
+                                  <% if x < review.rating %>
+                                    <li class="fa fa-star checked"></li>
+                                  <% else %>
+                                    <li class="fa fa-star"></li>
+                                  <% end %>
+                                <% end %>
+                              </h2>
+                            </div>
+                            <div class="container p-2">
+                              <p><%= review.content %></p>
+                            </div>
+                          </div>
+                        </div>
                 </div>
-              <% end %>
+                <% @recipe.reviews.sort_by(&:created_at).reverse.each do |review| %>
+                  <div class="carousel-item">
+                    <div class="container mt-5 meal-plan-show">
+                      <div class="card-product flex-column p-2 review-card" id="review-<%= review.id %>">
+                        <div class="container d-flex flex-column">
+                          <h2><%= User.find(review.user_id).first_name %>
+                            <% 5.times do |x| %>
+                              <% if x < review.rating %>
+                                <li class="fa fa-star checked"></li>
+                              <% else %>
+                                <li class="fa fa-star"></li>
+                              <% end %>
+                            <% end %>
+                          </h2>
+                        </div>
+                        <div class="container p-2">
+                          <p><%= review.content %></p>
+                        </div>
+                      </div>
+                  </div>
+                  </div>
+
+                </div>
+                <% end %>
+              </div>
             </div>
-        </div>
-      </div>
-    </div>
 </div>
