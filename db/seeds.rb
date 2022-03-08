@@ -36,27 +36,38 @@ puts "---------------------------"
 
 puts "Creating Medium Oddbox!"
 
-Oddbox.create(name: "Medium Oddbox", user_id: 1)
+3.times do |id|
+  Oddbox.create(name: "Medium Oddbox", user_id: id + 1)
+end
 
 puts "Creating Recipes!"
 
-odd_url = URI.open("https://www.oddbox.co.uk/recipes")
-odd_noko = Nokogiri::HTML(odd_url)
+names = []
+image_urls = []
+urls = []
 
-names = odd_noko.search(".curated-posts-section__post-title h1").map(&:text)
+3.times do |x|
+  odd_url = URI.open("https://www.oddbox.co.uk/recipes/page/#{x + 1}")
+  odd_noko = Nokogiri::HTML(odd_url)
 
-image_urls = odd_noko.search(".curated-posts-section__post img").map do |x|
-  unless x['src'].nil?
-    x['src'] if x['src'].include?('prismic')
+  names << odd_noko.search(".curated-posts-section__post-title h1").map(&:text)
+
+  image_urls << odd_noko.search(".curated-posts-section__post img").map do |y|
+    unless y['src'].nil?
+      y['src'] if y['src'].include?('prismic')
+    end
   end
-end
-image_urls.compact!
+  image_urls[x].compact!
 
-urls = odd_noko.search(".curated-posts-section__post a").map do |link|
-  link["href"] if link["href"].include?("recipes")
+  urls << odd_noko.search(".curated-posts-section__post a").map do |link|
+    link["href"] if link["href"].include?("recipes")
+  end
+  urls[x].compact!
 end
 
-urls.compact!
+names.flatten!
+image_urls.flatten!
+urls.flatten!
 
 descriptions = []
 method = []
@@ -136,16 +147,16 @@ puts "---------------------------"
 
 puts "Creating Reviews"
 
-150.times do
+450.times do
   review = Review.new(
     content: Faker::Restaurant.review,
     rating: rand(1..5),
     user_id: rand(1..10),
-    recipe_id: rand(1..24)
+    recipe_id: rand(1..72)
   )
   review.save
 end
 
-puts "---------------------------" * 2
+puts "---------------------------"
 
 puts "Finished"

@@ -1,106 +1,18 @@
 <div class="meal-plan-show">
   <h1>Shopping List</h1>
 
-<% dates = [] %>
-<% 20.times do |i| %>
-<% dates << ((Date.today + i).strftime("%d")).to_i %>
-<% end %>
+  <% dates = [] %>
+  <% 20.times do |i| %>
+  <% dates << ((Date.today + i).strftime("%d")).to_i %>
+  <% end %>
 
-<% dates_name = [] %>
-<% dates.each_with_index do |date, index| %>
-  <% dates_name << Date::DAYNAMES[Date.new(2022, 03, date).wday]%>
-<% end %>
+  <% dates_name = [] %>
+  <% dates.each_with_index do |date, index| %>
+    <% dates_name << Date::DAYNAMES[Date.new(2022, 03, date).wday]%>
+  <% end %>
 
-<p class="name-month">March</p>
-
-  <div class="carousel" data-controller="meal-plan">
-    <div class="month-names-carousel">
-      <div id="carouselExampleControls" class="carousel slide month" data-bs-ride="carousel" data-bs-interval="false">
-        <div class="carousel-inner">
-
-
-          <% dates_name.each_with_index do |name, index| %>
-          <% if index == 0 %>
-            <div class="carousel-item active">
-              <div class="row">
-                <div class=" date-show col-12">
-          <% end %>
-
-          <% if [4, 8, 12, 16].include?(index) %>
-            <div class="carousel-item">
-              <div class="row">
-                <div class=" date-show col-12">
-          <% end %>
-
-          <p class="name-day" style="d-flex text-size: 5px"><%= name.upcase[0, 3]  %></p>
-
-          <% if [3, 7, 11, 15, 19].include?(index) %>
-              </div>
-            </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-
-
-        <div class="carousel-control prev1 d-none" data-meal-plan-target="prev1" data-bs-target="#carouselExampleControls" data-bs-slide="prev"></div>
-        <div class="carousel-control-next next1 d-none" data-meal-plan-target="next1" data-bs-target="#carouselExampleControls" data-bs-slide="next"></div>
-      </div>
-    </div>
-
-        <button class="c-prev carousel-control-prev" type="button" data-meal-plan-target="cprev" data-action="click->meal-plan#prev">
-          <i class="c-prev arrow-l fa fa-solid fa-angle-left"></i>
-        </button>
-
-        <button class="c-next carousel-control-next" type="button" data-meal-plan-target="cnext" data-action="click->meal-plan#next">
-          <i class="c-next arrow-r fa fa-solid fa-angle-right"></i>
-        </button>
-
-    <div class="numbers-month-carousel">
-      <div id="carouselExampleControls1" class="carousel slide numbers" data-bs-ride="carousel" data-bs-interval="false">
-        <div class="carousel-inner">
-
-        <% dates.each_with_index do |date, index| %>
-          <% if index == 0 %>
-            <div class="carousel-item active">
-              <div class="row">
-                <div class=" date-show col-12">
-          <% end %>
-
-          <% if [4, 8, 12, 16].include?(index) %>
-            <div class="carousel-item">
-              <div class="row">
-                <div class=" date-show col-12">
-          <% end %>
-
-
-          <%= form_tag user_shopping_list_path, method: :get do %>
-            <%= hidden_field_tag 'date', "#{date}" %>
-            <%= hidden_field_tag 'previous_date', "#{params[:date]}" %>
-            <% if params[:previous_date] == params[:date] %>
-              <% date_bg = '' %>
-            <% elsif params[:date].to_i == date %>
-              <% date_bg = 'date-bg' %>
-            <% end %>
-            <%= submit_tag "#{date}", class: "number-btn #{ date_bg }" %>
-          <% end %>
-
-
-          <% if [3, 7, 11, 15, 19].include?(index) %>
-              </div>
-            </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-        <div class="carousel-control prev2  d-none" data-meal-plan-target="prev2" data-bs-target="#carouselExampleControls1" data-bs-slide="prev"></div>
-        <div class="carousel-control-next next2  d-none" data-meal-plan-target="next2" data-bs-target="#carouselExampleControls1" data-bs-slide="next"></div>
-      </div>
-    </div>
-  </div>
-
-  <% date_counter = @meal_plan[0]&.date %>
   <% @meal_plan.each_with_index do |meal_plan, index| %>
+  <% date_counter = meal_plan.date %>
     <% meal = meal_plan.recipe_id%>
     <div class = "date-meal-plan">
       <% date = meal_plan.date %>
@@ -108,34 +20,31 @@
       <% year = ymd[0].to_i %>
       <% month = ymd[1].to_i %>
       <% day = ymd[2].to_i %>
-    <% if Time.new(year, month, day) >= Time.new(Time.now.strftime("%Y").to_i, Time.now.strftime("%m").to_i, Time.now.strftime("%d").to_i) %>
-
-      <% if date_counter == meal_plan.date && index == 0 %>
-        <%= date.strftime('%a') %>
-        <%= date.day %>.<%= Date::MONTHNAMES[date.month].downcase %>
-      <% elsif date_counter != @meal_plan[index - 1].date %>
-        <% date_counter = meal_plan.date %>
-        <%= date.strftime('%a') %>
-        <%= date.day %>.<%= Date::MONTHNAMES[date.month].downcase %>
-      <% end %>
-      <% date_counter = @meal_plan[index + 1].date if index < @meal_plan.count - 1 %>
-
+      <% if Time.new(year, month, day) >= Time.new(Time.now.strftime("%Y").to_i, Time.now.strftime("%m").to_i, Time.now.strftime("%d").to_i) %>
+        <% if date_counter == meal_plan.date %>
+          <%= date.strftime('%a') %>
+          <%= date.day %>.<%= Date::MONTHNAMES[date.month].downcase %>
+        <% elsif date_counter != @meal_plan[index - 1].date %>
+          <% date_counter = meal_plan.date %>
+          <%= date.strftime('%a') %>
+          <%= date.day %>.<%= Date::MONTHNAMES[date.month].downcase %>
+        <% end %>
+        <% date_counter = @meal_plan[index + 1].date if index < @meal_plan.count - 1 %>
     </div>
-      <% recipe = Recipe.find(meal) %>
-      <div class="card-product-infos" data-controller="dropdown">
-        <h2><%= recipe.name %></h2>
-        <div class="dropdown">
-          <a class="dropbtn" data-action="click->dropdown#toggleSubstitutes"> <i class="fa fa-caret-down"></i> Ingredients</a>
-          <div id="myDropdown" class="dropdown-content" data-dropdown-target="dropdown">
-            <ul class="recipe-sub-li">
-              <% RecipeIngredient.where(recipe_id: recipe.id).each do |ing| %>
-                <li><%= ing.quantity %> <%= Ingredient.find(ing.ingredient_id).name %></li>
-              <% end %>
-            </ul>
-          </div>
+    <% recipe = Recipe.find(meal) %>
+    <div class="card-product-infos" data-controller="dropdown">
+      <h2><%= recipe.name %></h2>
+      <div class="dropdown">
+        <a class="dropbtn" data-action="click->dropdown#toggleSubstitutes"> <i class="fa fa-caret-down"></i> Ingredients</a>
+        <div id="myDropdown" class="dropdown-content" data-dropdown-target="dropdown">
+          <ul class="recipe-sub-li">
+            <% RecipeIngredient.where(recipe_id: recipe.id).each do |ing| %>
+              <li><%= check_box(meal_plan, "purchased?", checked: true if meal_plan.purchased) %> <%= ing.quantity %> <%= ing.ingredient.name %></li>
+            <% end %>
+          </ul>
         </div>
       </div>
-    <div>
+    </div>
+      <% end %>
   <% end %>
 </div>
-<% end %>
