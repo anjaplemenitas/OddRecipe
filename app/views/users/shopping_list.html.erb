@@ -129,7 +129,7 @@
           <div id="myDropdown" class="dropdown-content" data-dropdown-target="dropdown">
             <ul class="recipe-sub-li">
               <% RecipeIngredient.where(recipe_id: recipe.id).each do |ing| %>
-                <li><%= ing.quantity %> <%= Ingredient.find(ing.recipe_id).name %></li>
+                <li><%= ing.quantity %> <%= Ingredient.find(ing.ingredient_id).name %></li>
               <% end %>
             </ul>
           </div>
