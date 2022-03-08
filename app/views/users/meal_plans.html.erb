@@ -23,7 +23,7 @@
           <% if index == 0 %>
             <div class="carousel-item active">
               <div class="row">
-                <div class=" date-show col-12">
+                <div class=" date-show-name col-12">
           <% end %>
 
           <% if [4, 8, 12, 16].include?(index) %>
@@ -126,11 +126,13 @@
           <div class="card-product">
             <%= image_tag(Recipe.find(meal).image_url) %>
             <div class="text-recipe">
-              <div class="card-product-infos">
+              <div class="card-product-infos-calendar">
                 <h2><%= recipe.name %></h2>
-                <p>Total time: <%= recipe.cooking_time %></p>
-                <%# <i class="fa fa-solid fa-xmark"></i> %>
+                 <p> <i class="far fa-clock"></i> <%= recipe.cooking_time %> mins </p>
               </div>
+          <%= link_to recipe_meal_plan_path(meal_plan), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fas fa-times-circle"></i>
+          <% end %>
               <div class="stars-meal-plan">
                 <p><% review = Review.find(recipe.id) %></p>
                 <ul class="stars-index" ><% 5.times do |x| %>

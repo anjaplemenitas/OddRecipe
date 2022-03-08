@@ -39,7 +39,6 @@
   }
 
   .card-product {
-    overflow: hidden;
     height: 120px;
     background: white;
     box-shadow: 0 0 5px rgba(0,0,0,0.2);
@@ -49,13 +48,24 @@
     position: relative;
     border: 2px #2E5A36 solid;
     border-radius: 5px;
+
+    .fa-times-circle {
+      position: absolute;
+      right: -9px;
+      top: -9px;
+      font-size: 22px;
+      text-decoration: none;
+      color: #ffa502;
+      background-color: white;
+    }
   }
 
   .card-product img {
     height: 100%;
     width: 120px;
-    object-fit: cover;
+    height: 120px;
     padding: 7px;
+    object-fit: cover;
   }
 
   .card-product h2 {
@@ -70,7 +80,7 @@
     font-size: 12px;
     line-height: 1.4;
     opacity: .7;
-    margin-bottom: 0;
+    margin-left: 0;
     margin-top: 8px;
     color: #000000;
     font-family: 'Interstate-light';
@@ -80,7 +90,30 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 13px;
+    top: 7px;
+  }
+
+  .card-product .card-product-infos-oddbox {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 7px;
+
+    h2 {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 0;
+      color: #000000;
+      font-family: 'Interstate-regular';
+      padding: 0px;
+    }
+  }
+
+  .card-product .card-product-infos-calendar {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 10px;
   }
 
   a {
@@ -92,6 +125,22 @@
     gap: 37px;
     justify-content: center;
     font-family: 'Interstate-regular';
+  }
+
+  .date-show-name {
+    display: flex;
+    justify-content: space-evenly;
+    justify-content: center;
+    font-family: 'Interstate-regular';
+
+    p {
+      font-family: 'Interstate-light';
+      display: flex;
+      font-size: 16px;
+      margin-bottom: 15px;
+      width: 42px;
+      place-content: center;
+    }
   }
 
   .number-btn{
