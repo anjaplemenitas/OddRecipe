@@ -21,6 +21,7 @@
            <% end %>
            <% end %>
           </ul>
+        <p> <i class="fa fa-carrot"></i> <%= @recipe.difficulty %></p>
       </div>
 
       <% dates = [] %>
@@ -343,8 +344,8 @@
         <div class="recipe-ing" data-controller="dropdown">
           <h4>Ingredients:</h4>
           <ul class="recipe-ing-li">
-          <% @recipe.ingredients.each do |r| %>
-            <li><%= r.name %></li>
+          <% RecipeIngredient.where(recipe_id: @recipe.id).each do |ri| %>
+            <li><%= ri.quantity %> <%= ri.ingredient.name %></li>
           <% end %>
           </ul>
           <div class="dropdown">
