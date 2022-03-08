@@ -3,19 +3,19 @@
   <div class="icons col-12">
    <% if user_signed_in? %>
       <%= link_to recipes_path do %>
-        <i  class="fas fa-utensils" ></i>
+        <i class="fas fa-utensils"></i>
       <% end %>
       <%= link_to oddbox_path(current_user.oddbox) do %>
-      <i class="fa fa-solid fa-box-open"></i>
+        <i class="fa fa-solid fa-box-open"></i>
       <% end %>
       <%= link_to user_meal_plan_path(current_user) do %>
-      <i class="fas fa-calendar-alt"></i>
+        <i class="fas fa-calendar-alt"></i>
       <% end %>
       <%# <%= link_to linkto do %>
-      <i class="fas fa-shopping-basket"></i>
+       <i class="fas fa-shopping-basket"></i>
       <%# <% end %>
       <%= link_to user_oddbook_path(current_user) do %>
-      <i class="fa fa-solid fa-bookmark"></i>
+       <i class="fa fa-solid fa-heart"></i>
       <% end %>
     <% end %>
   </div>
