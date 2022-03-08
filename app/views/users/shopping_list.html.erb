@@ -37,10 +37,12 @@
       <div class="dropdown">
         <a class="dropbtn" data-action="click->dropdown#toggleSubstitutes"> <i class="fa fa-caret-down"></i> Ingredients</a>
         <div id="myDropdown" class="dropdown-content" data-dropdown-target="dropdown">
-          <ul class="recipe-sub-li">
-            <% RecipeIngredient.where(recipe_id: recipe.id).each do |ing| %>
-              <li><%= check_box(meal_plan, "purchased?", checked: true if meal_plan.purchased) %> <%= ing.quantity %> <%= ing.ingredient.name %></li>
+          <ul class="recipe-sub-li" data-controller="check-purchase">
+            <% RecipeIngredient.where(recipe_id: recipe.id).each_with_index do |ing, i| %>
+              <%= simple_form_for meal_plan.shopping_lists[i], method: :patch do |f|  %>
+              <li><%= f.input :purchased, as: :boolean, checked_value: true, unchecked_value: false, input_html: { data: { check_purchase_target: "box", action: "change->check-purchase#test" } } %> <%= ing.quantity %> <%= ing.ingredient.name %></li>
             <% end %>
+          <% end %>
           </ul>
         </div>
       </div>

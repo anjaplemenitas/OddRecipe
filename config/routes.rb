@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :oddboxes, only: %i[show]
   resources :users, only: %i[show]
+  resources :shopping_lists, only: %i[update]
 
   resources :recipes, only: %i[index show] do
     resources :reviews, only: %i[new create]
