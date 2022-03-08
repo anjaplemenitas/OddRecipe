@@ -14,11 +14,12 @@
       <%= f.submit "Submit", class: "button-submit" %>
     <% end %>
   </div>
-  <div class="meal-plan-show">
+  <div class="meal-plan-review">
     <% @recipe.reviews.sort_by(&:created_at).reverse.each do |review| %>
-      <div class="card-product flex-column p-2 review-card" id="review-<%= review.id %>">
-        <div class="container d-flex flex-column">
-          <h2><%= User.find(review.user_id).first_name %>
+      <div class="card-product flex-column review-card" id="review-<%= review.id %>">
+        <div class="name-review">
+          <h2><%= User.find(review.user_id).first_name %></h2>
+          <div class="review-stars">
             <% 5.times do |x| %>
               <% if x < review.rating %>
                 <li class="fa fa-star checked"></li>
@@ -26,9 +27,9 @@
                 <li class="fa fa-star"></li>
               <% end %>
             <% end %>
-          </h2>
+          </div>
         </div>
-        <div class="container p-2">
+        <div class="review-text">
           <p><%= review.content %></p>
         </div>
       </div>
