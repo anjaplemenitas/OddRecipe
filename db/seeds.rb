@@ -67,12 +67,12 @@ urls.each do |url|
   print "."
   temp_noko = Nokogiri::HTML(URI.open("https://www.oddbox.co.uk#{url}"))
   temp_ingredients = temp_noko.search(".recipe__ingredients p").map do |ing|
-    x = ing.text.match(/^(?<amount>\w?\d*\W?\s*(g|ml|tbsp|tsp)?)?\s*(?<ing>[a-zA-Z]\s?[a-z]*(-|\s)?[a-zA-Z|&]*\s?([a-zA-Z]*|$?)\s?([a-z]{6})?)$?(?<extra>\(.*\))?$?/)
+    x = ing.text.match(/^(?<amount>\w?\d*\W?\s*(g|ml|tbsp|tsp)?)?\s*(?<ing>[a-zA-Z]\s?[a-z]*(-|\s)?[a-zA-Z|&]*\s?([a-zA-Z]*|$?)\s?([a-z]{2,})?)$?(?<extra>\(.*\))?$?/)
     x['ing'].strip unless x['ing'].strip.nil?
   end
 
   temp_ing_quantity = temp_noko.search(".recipe__ingredients p").map do |ing|
-    x = ing.text.match(/^(?<amount>\w?\d*\W?\s*(g|ml|tbsp|tsp)?)?\s*(?<ing>[a-zA-Z]\s?[a-z]*(-|\s)?[a-zA-Z|&]*\s?([a-zA-Z]*|$?)\s?([a-z]{6})?)$?(?<extra>\(.*\))?$?/)
+    x = ing.text.match(/^(?<amount>\w?\d*\W?\s*(g|ml|tbsp|tsp)?)?\s*(?<ing>[a-zA-Z]\s?[a-z]*(-|\s)?[a-zA-Z|&]*\s?([a-zA-Z]*|$?)\s?([a-z]{2,})?)$?(?<extra>\(.*\))?$?/)
     x['amount'].strip unless x['amount'].strip.nil?
   end
 

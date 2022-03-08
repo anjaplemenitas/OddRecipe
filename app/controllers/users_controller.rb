@@ -30,7 +30,42 @@ class UsersController < ApplicationController
   end
 
   def shopping_list
-    @odd_ingredients = current_user.oddbox.ingredients
-    @meal_plan = current_user.meal_plan(current_user)
+    # @odd_ingredients = current_user.oddbox.ingredients
+    # @all_meal_plans_dates = current_user.meal_plan(current_user).sort_by(&:date).map(&:date)
+    # @meal_plan = current_user.meal_plan(current_user)
+
+    # if params["/users/#{current_user.id}/shoppinglist"].present?
+    #   return if params["/users/#{current_user.id}/shoppinglist"]["Date"].empty?
+
+    #   @date_select = date_selection(params["/users/#{current_user.id}/shoppinglist"]["Date"])
+
+
+    #   tmp_arr = []
+
+    #   @meal_plan.each do |meal|
+    #     tmp_arr << meal if meal.date == @date_select
+    #   end
+
+    #   @meal_plan = tmp_arr
+    # end
+
+    @user = current_user
+    if params[:previous_date].present? && params[:previous_date] == params[:date]
+      @meal_plan = @user.meal_plan(@user)
+    elsif params[:date].present?
+      date = Date.new(2022, 03, params[:date].to_i)
+      @meal_plan = MealPlan.where(date: date)
+    else
+      @meal_plan = @user.meal_plan(@user)
+    end
+  end
+
+  private
+
+  def date_selection(chosen_date)
+    year = chosen_date[0, 4].to_i
+    month = chosen_date[5, 7].to_i
+    date = chosen_date[8, 9].to_i
+    Date.new(year, month, date)
   end
 end
