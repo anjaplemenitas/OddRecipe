@@ -1,23 +1,25 @@
 .odd-show-head {
   background-color: white;
-  height: 620px;
 
   h2 {
-    font-weight: 700;
-    font-size: 26pt;
+    text-align: center;
+    color: #2E5A36;
+    font-size: 30pt;
     font-family: 'Odd-Medium';
     padding-top: 10px;
   }
+
   h5 {
-    font-weight: 600;
     font-size: 10pt;
     font-family: 'Interstate-regular';
+    margin-bottom: 4px;
   }
   p {
     font-weight: 400;
     font-size: 8pt;
     margin-bottom: 0;
-    padding-right: 20px;
+    margin-left: 0px;
+    padding-right: 18px;
     font-family: 'Interstate-light';
   }
   img {
@@ -33,7 +35,7 @@ h2 {
   padding: 16px;
   border: solid #F2B63E 5px;
   border-radius: 3px;
-  width: 87vw;
+  width: 90vw;
 }
 
 #user-show-mini-head {
@@ -45,12 +47,12 @@ h2 {
 .dropdown-store-veg {
   position: relative;
   display: inline-block;
-  width: 91%;
+  width: 90%;
   background-color: #f2b63e;
   color: white;
   border-radius: 5px;
   padding-left: 10px;
-  margin: 15px;
+  margin: 19px;
   font-family: 'Interstate-light';
 
   .dropbtn {
@@ -87,6 +89,7 @@ h2 {
 
   strong {
     font-family: 'Interstate-regular';
+    color: black;
   }
   }
 }

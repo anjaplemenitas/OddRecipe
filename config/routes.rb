@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   resources :recipes, only: %i[index show] do
     resources :reviews, only: %i[new create]
 
-    resources :meal_plans, only: %i[create]
+    resources :meal_plans, only: %i[create, destroy]
   end
 end

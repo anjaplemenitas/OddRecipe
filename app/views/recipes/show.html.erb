@@ -11,12 +11,14 @@
     <div class="recipe-card-links">
       <div class="recipe-time">
         <p> <i class="far fa-clock"></i> <%= @recipe.cooking_time %> mins </p>
+          <%= link_to new_recipe_review_path(@recipe) do %>
           <ul class="recipe-stars"> <% 5.times do |x| %>
             <% if x < @recipe.rating %>
               <li class="fa fa-star checked"> </li>
             <% else %>
               <li class="fa fa-star"> </li>
             <% end %>
+           <% end %>
            <% end %>
           </ul>
       </div>
@@ -357,9 +359,6 @@
           </div>
         </div>
 
-
-
-
       <br>
         <div class="recipe-desc">
           <h4>Description:</h4>
@@ -377,17 +376,52 @@
               </ul>
           </div>
           <br>
-            <div class="recipe-stor">
-              <h4>How to Store:</h4>
-              <p><%= @recipe.storage %></p>
+            <div class="recipe-stor" data-controller="dropdown">
+              <div class="dropdown">
+                <a class="dropbtn" data-action="click->dropdown#toggleSubstitutes"> <i class="fa fa-caret-down"></i> How to Store </a>
+                <div id="myDropdown" class="dropdown-content" data-dropdown-target="dropdown">
+                  <p><%= @recipe.storage %></p>
+                </div>
+              </div>
             </div>
             <br>
-              <div class="recipe-leftover">
-                <h4>Leftovers:</h4>
-                <p><%= @recipe.leftover %></p>
+              <div class="recipe-leftover" data-controller="dropdown">
+                <div class="dropdown">
+                  <a class="dropbtn" data-action="click->dropdown#toggleSubstitutes"> <i class="fa fa-caret-down"></i> Leftovers </a>
+                  <div id="myDropdown" class="dropdown-content" data-dropdown-target="dropdown">
+                    <p><%= @recipe.leftover %></p>
+                  </div>
+                </div>
               </div>
               <br>
                 <div class="recipe-review-btn">
                   <button class="button-review"><%= link_to "Leave a review", new_recipe_review_path(@recipe)%></button>
                 </div>
+
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="container mt-5 meal-plan-show">
+              <% @recipe.reviews.sort_by(&:created_at).reverse.each do |review| %>
+                <div class="card-product flex-column p-2 review-card" id="review-<%= review.id %>">
+                  <div class="container d-flex flex-column">
+                    <h2><%= User.find(review.user_id).first_name %>
+                      <% 5.times do |x| %>
+                        <% if x < review.rating %>
+                          <li class="fa fa-star checked"></li>
+                        <% else %>
+                          <li class="fa fa-star"></li>
+                        <% end %>
+                      <% end %>
+                    </h2>
+                  </div>
+                  <div class="container p-2">
+                    <p><%= review.content %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+        </div>
+      </div>
+    </div>
 </div>
