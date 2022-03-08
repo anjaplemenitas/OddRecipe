@@ -12,6 +12,12 @@ class MealPlansController < ApplicationController
     end
   end
 
+  def destroy
+    @meal_plan = MealPlan.find(params[:recipe_id])
+    @meal_plan.destroy
+    redirect_to user_meal_plan_path, notice: 'Meal was successfully removed.'
+  end
+
   private
 
   def mealplan_params
