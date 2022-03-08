@@ -6,14 +6,15 @@
         <%= image_tag(@recipe.image_url) %>
       </div>
   </div>
+  <br>
   <div class="container">
     <%= simple_form_for [@recipe, @review] do |f| %>
       <%= f.input :content, label: "Leave a review" %>
       <%= f.input :rating, label: "Rate this recipe", collection: (1..5).to_a %>
-      <%= f.submit "Submit" %>
+      <%= f.submit "Submit", class: "button-submit" %>
     <% end %>
   </div>
-  <div class="container mt-5 meal-plan-show">
+  <div class="meal-plan-show">
     <% @recipe.reviews.sort_by(&:created_at).reverse.each do |review| %>
       <div class="card-product flex-column p-2 review-card" id="review-<%= review.id %>">
         <div class="container d-flex flex-column">
