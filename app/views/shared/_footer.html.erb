@@ -1,23 +1,24 @@
 <div class="mt-4">
-<div class="footer col-12">
-  <div class="icons col-12">
-   <% if user_signed_in? %>
-      <%= link_to recipes_path do %>
-        <i class="fas fa-utensils"></i>
+  <div class="footer col-12">
+    <div class="icons col-12">
+    <% if user_signed_in? %>
+
+        <%= link_to recipes_path do %>
+          <i class="fas fa-utensils <%= "footer-active" if params[:controller] == "recipes" && params[:action] == "index" %>"></i>
+        <% end %>
+        <%= link_to oddbox_path(current_user.oddbox) do %>
+          <i class="fa fa-solid fa-box-open <%= "footer-active" if params[:controller] == "oddboxes" && params[:action] == "show" %>"></i>
+        <% end %>
+        <%= link_to user_meal_plan_path(current_user) do %>
+          <i class="fas fa-calendar-alt <%= "footer-active" if params[:controller] == "users" && params[:action] == "meal_plans" %>"></i>
+        <% end %>
+        <%# <%= link_to linkto do %>
+        <i class="fas fa-shopping-basket"></i>
+        <%# <% end %>
+        <%= link_to user_oddbook_path(current_user) do %>
+        <i class="fa fa-solid fa-heart <%= "footer-active" if params[:controller] == "users" && params[:action] == "oddbook" %>"></i>
+        <% end %>
       <% end %>
-      <%= link_to oddbox_path(current_user.oddbox) do %>
-        <i class="fa fa-solid fa-box-open"></i>
-      <% end %>
-      <%= link_to user_meal_plan_path(current_user) do %>
-        <i class="fas fa-calendar-alt"></i>
-      <% end %>
-      <%# <%= link_to linkto do %>
-       <i class="fas fa-shopping-basket"></i>
-      <%# <% end %>
-      <%= link_to user_oddbook_path(current_user) do %>
-       <i class="fa fa-solid fa-heart"></i>
-      <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
 </div>
