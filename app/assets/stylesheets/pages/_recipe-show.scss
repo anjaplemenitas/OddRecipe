@@ -2,6 +2,11 @@
   display: flex;
   justify-content: center;
   margin-top: 10px;
+
+  h1 {
+    font-family: 'Odd-Medium';
+    color: #2E5A36;
+  }
 }
 
 .recipe-img {
@@ -19,18 +24,18 @@
      object-fit: cover;
      background-position: center;
   }
-}
 
-.fa-heart {
-  position: absolute;
-  bottom: 8px;
-  right: 16px;
-  color: white;
-  font-size: x-large;
+  .fa-heart {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    color: white;
+    font-size: x-large;
+  }
 }
 
 i.red {
-  color: red;
+  color: red !important;
 }
 
 .recipe-card-links {
@@ -88,9 +93,14 @@ i.red {
   border-radius: 8px;
   padding: 6px 6px 0px 6px;
 
+  h4 {
+    font-family: 'Interstate-regular';
+  }
+
   .recipe-ing-li {
     padding-inline-start: 0;
     list-style-type: none;
+    font-family: 'Interstate-light';
   }
 }
 
@@ -98,6 +108,7 @@ i.red {
 .dropbtn {
   background-color: #2E5A36;
   color: white;
+  font-family: 'Interstate-regular';
   width: 100%;
   font-size: 20px;
   border: none;
@@ -141,6 +152,7 @@ a:hover{
   padding-inline-start: 0;
   list-style-type: none;
   margin-top: 5px;
+  font-family: 'Interstate-light';
 
   li {
     margin-bottom: 10px;
@@ -154,6 +166,14 @@ a:hover{
   border-radius: 8px;
   margin: 0px 8px 0px 8px;
   padding: 6px 6px 0px 6px;
+
+  h4 {
+    font-family: 'Interstate-regular';
+  }
+
+  p {
+    font-family: 'Interstate-light';
+  }
 }
 
 .recipe-meth {
@@ -161,6 +181,14 @@ a:hover{
   border-radius: 8px;
   margin: 0px 8px 0px 8px;
   padding: 6px 6px 0px 6px;
+
+  h4 {
+    font-family: 'Interstate-regular';
+  }
+
+  li {
+    font-family: 'Interstate-light';
+  }
 }
 
 .recipe-stor {
@@ -168,6 +196,14 @@ a:hover{
   border-radius: 8px;
   margin: 0px 8px 0px 8px;
   padding: 6px 6px 0px 6px;
+
+  h4 {
+    font-family: 'Interstate-regular';
+  }
+
+  p {
+    font-family: 'Interstate-light';
+  }
 }
 
 .recipe-leftover {
@@ -175,6 +211,14 @@ a:hover{
   border-radius: 8px;
   margin: 0px 8px 0px 8px;
   padding: 6px 6px 0px 6px;
+
+  h4 {
+    font-family: 'Interstate-regular';
+  }
+
+  p {
+    font-family: 'Interstate-light';
+  }
 }
 
 
