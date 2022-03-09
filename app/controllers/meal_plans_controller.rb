@@ -15,6 +15,8 @@ class MealPlansController < ApplicationController
 
   def destroy
     @meal_plan = MealPlan.find(params[:recipe_id])
+    @shopping_list = ShoppingList.where(meal_plan_id: @meal_plan.id)
+    @shopping_list.each(&:destroy)
     @meal_plan.destroy
     redirect_to user_meal_plan_path, notice: 'Meal was successfully removed.'
   end
