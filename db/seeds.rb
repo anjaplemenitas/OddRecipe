@@ -129,7 +129,8 @@ names.each_with_index do |name, index|
     storage: "1 week",
     method: method[index],
     image_url: image_urls[index],
-    substitute: Faker::Food.fruits
+    substitute: Faker::Food.fruits,
+    difficulty: ["Amateur", "Intermediate", "Professional"].sample
   )
 
   recipe.save

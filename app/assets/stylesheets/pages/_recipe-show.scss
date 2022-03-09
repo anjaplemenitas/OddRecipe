@@ -6,19 +6,22 @@
   h1 {
     font-family: 'Odd-Medium';
     color: #2E5A36;
+    text-align: center;
+    padding-right: 5px;
+    padding-left: 5px;
   }
 }
 
 .recipe-img {
-  box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1), 0.3em 0.3em 1em rgba(0,0,0,0.3);
+  box-shadow: inset 0 0em 1em rgba(0,0,0,0.1), 0.1em 0.1em 1em rgba(0,0,0,0.1);
   margin-bottom: 20px;
   position: relative;
-  border-radius: 8px;
+  border-radius: 3px;
   height: 30vh;
 
 
   img {
-     border-radius: 8px;
+     border-radius: 3px;
      height: 30vh;
      width: 22em;
      object-fit: cover;
@@ -28,9 +31,10 @@
   .fa-heart {
     position: absolute;
     bottom: 8px;
-    right: 16px;
+    right: 8px;
     color: white;
     font-size: x-large;
+    text-shadow: 1px 1px 3px black;
   }
 }
 
@@ -53,6 +57,10 @@ i.red {
 
   p {
     margin-bottom: 5px;
+    font-family: 'Interstate-light';
+    font-size: 17px;
+    margin-left: 0;
+    margin-right: 15px;
   }
 
   .recipe-stars {
@@ -71,6 +79,11 @@ i.red {
   opacity: 0.8;
 }
 
+.fa-carrot {
+  opacity: 0.8;
+  // color: #F2B63E;
+}
+
 .recipe-cal-btn {
   display: flex;
   justify-content: flex-end;
@@ -87,11 +100,10 @@ i.red {
 }
 
 .recipe-ing {
-  margin-left: 8px;
   margin-top: 15px;
   border: solid 3px #2E5A36;
-  border-radius: 8px;
-  padding: 6px 6px 0px 6px;
+  border-radius: 5px;
+  padding: 16px 11px 9px 15px;
 
   h4 {
     font-family: 'Interstate-regular';
@@ -127,7 +139,7 @@ a:hover{
   background-color: #2E5A36;
   color: white;
   border-radius: 8px;
-  padding: 3px 0px 3px 5px;
+  padding: 5px 0px 3px 5px;
 }
 
 .dropdown-content{
@@ -153,6 +165,7 @@ a:hover{
   list-style-type: none;
   margin-top: 5px;
   font-family: 'Interstate-light';
+  padding: 0px 5px;
 
   li {
     margin-bottom: 10px;
@@ -162,10 +175,10 @@ a:hover{
 
 
 .recipe-desc {
+  margin-top: 10px;
   border: solid 3px #2E5A36;
-  border-radius: 8px;
-  margin: 0px 8px 0px 8px;
-  padding: 6px 6px 0px 6px;
+  border-radius: 5px;
+  padding: 16px 11px 15px 15px;
 
   h4 {
     font-family: 'Interstate-regular';
@@ -173,17 +186,23 @@ a:hover{
 
   p {
     font-family: 'Interstate-light';
+    margin: 0;
   }
 }
 
 .recipe-meth {
+  margin-top: 10px;
   border: solid 3px #2E5A36;
-  border-radius: 8px;
-  margin: 0px 8px 0px 8px;
-  padding: 6px 6px 0px 6px;
+  border-radius: 5px;
+  padding: 16px 11px 15px 15px;
 
   h4 {
     font-family: 'Interstate-regular';
+    padding-bottom: 5px;
+  }
+
+  ul {
+    padding-left: 1rem;
   }
 
   li {
@@ -201,6 +220,7 @@ a:hover{
 
   p {
     font-family: 'Interstate-light';
+    padding-top: 10px;
   }
 }
 
@@ -214,6 +234,7 @@ a:hover{
 
   p {
     font-family: 'Interstate-light';
+    padding-top: 10px;
   }
 }
 
@@ -247,7 +268,6 @@ a:hover{
 }
 
 .fa-angle-right {
-  // color: black;
   font-size: 25px;
   position: absolute;
   top: 165px;
@@ -255,7 +275,6 @@ a:hover{
 }
 
 .fa-angle-left {
-  // color: black;
   font-size: 25px;
   position: absolute;
   top: 165px;
@@ -273,9 +292,6 @@ a:hover{
 }
 
 .button-close {
-  // background-color: white;
-  // border: 3px solid #F2B63E;
-  // color: #F2B63E;
   color: white;
   background-color: #F2B63E;
   padding: 5px 20px;

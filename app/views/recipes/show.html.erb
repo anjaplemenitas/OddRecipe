@@ -1,4 +1,4 @@
-<div class="container" style="padding: 0;">
+<div class="container">
   <div class="recipe-header">
     <h1><%= @recipe.name %></h1>
   </div>
@@ -21,6 +21,7 @@
            <% end %>
            <% end %>
           </ul>
+        <p> <i class="fa fa-carrot"></i> <%= @recipe.difficulty %></p>
       </div>
 
       <% dates = [] %>
@@ -343,12 +344,12 @@
         <div class="recipe-ing" data-controller="dropdown">
           <h4>Ingredients:</h4>
           <ul class="recipe-ing-li">
-          <% @recipe.ingredients.each do |r| %>
-            <li><%= r.name %></li>
+          <% RecipeIngredient.where(recipe_id: @recipe.id).each do |ri| %>
+            <li><%= ri.quantity %> <%= ri.ingredient.name %></li>
           <% end %>
           </ul>
           <div class="dropdown">
-            <a class="dropbtn" data-action="click->dropdown#toggleSubstitutes"> <i class="fa fa-caret-down"></i> Substitutes </a>
+            <a class="dropbtn" data-action="click->dropdown#toggleSubstitutes"> <i class="fa fa-caret-down" style="padding-right: 7px; padding-left: 10px;"></i> Substitutes </a>
             <div id="myDropdown" class="dropdown-content" data-dropdown-target="dropdown">
               <ul class="recipe-sub-li">
                 <% @recipe.method.gsub("[", "").gsub("]", "").gsub(/\\/, "").split("\",").each do |sub| %>
@@ -378,7 +379,7 @@
           <br>
             <div class="recipe-stor" data-controller="dropdown">
               <div class="dropdown">
-                <a class="dropbtn" data-action="click->dropdown#toggleSubstitutes"> <i class="fa fa-caret-down"></i> How to Store </a>
+                <a class="dropbtn" data-action="click->dropdown#toggleSubstitutes"> <i class="fa fa-caret-down" style="padding-right: 7px; padding-left: 10px;"></i> How to Store </a>
                 <div id="myDropdown" class="dropdown-content" data-dropdown-target="dropdown">
                   <p><%= @recipe.storage %></p>
                 </div>
@@ -387,7 +388,7 @@
             <br>
               <div class="recipe-leftover" data-controller="dropdown">
                 <div class="dropdown">
-                  <a class="dropbtn" data-action="click->dropdown#toggleSubstitutes"> <i class="fa fa-caret-down"></i> Leftovers </a>
+                  <a class="dropbtn" data-action="click->dropdown#toggleSubstitutes"> <i class="fa fa-caret-down" style="padding-right: 7px; padding-left: 10px;"></i> Leftovers </a>
                   <div id="myDropdown" class="dropdown-content" data-dropdown-target="dropdown">
                     <p><%= @recipe.leftover %></p>
                   </div>
@@ -398,14 +399,15 @@
                   <button class="button-review"><%= link_to "Leave a review", new_recipe_review_path(@recipe)%></button>
                 </div>
 
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselExampleSlidesOnly" class="carousel slide">
               <div class="carousel-inner">
                 <div class="carousel-item active">
                   <% review = @recipe.reviews.first %>
-                    <div class="container mt-5 meal-plan-show">
-                      <div class="card-product flex-column p-2 review-card" id="review-<%= review.id %>">
-                          <div class="container d-flex flex-column">
-                            <h2><%= User.find(review.user_id).first_name %>
+                    <div class="meal-plan-review">
+                      <div class="card-product flex-column review-card" id="review-<%= review.id %>">
+                          <div class="name-review">
+                            <h2><%= User.find(review.user_id).first_name %></h2>
+                              <div class="review-stars">
                                 <% 5.times do |x| %>
                                   <% if x < review.rating %>
                                     <li class="fa fa-star checked"></li>
@@ -413,30 +415,34 @@
                                     <li class="fa fa-star"></li>
                                   <% end %>
                                 <% end %>
-                              </h2>
+                              </div>
                             </div>
                             <div class="container p-2">
                               <p><%= review.content %></p>
                             </div>
+                            <i class="fas fa-arrow-circle-right"></i>
                           </div>
                         </div>
                 </div>
                 <% @recipe.reviews.sort_by(&:created_at).reverse.each do |review| %>
                   <div class="carousel-item">
-                    <div class="container mt-5 meal-plan-show">
-                      <div class="card-product flex-column p-2 review-card" id="review-<%= review.id %>">
-                        <div class="container d-flex flex-column">
-                          <h2><%= User.find(review.user_id).first_name %>
-                            <% 5.times do |x| %>
-                              <% if x < review.rating %>
-                                <li class="fa fa-star checked"></li>
-                              <% else %>
-                                <li class="fa fa-star"></li>
+                    <div class="meal-plan-review">
+                      <div class="card-product flex-column review-card" id="review-<%= review.id %>">
+                        <div class="name-review">
+                          <h2><%= User.find(review.user_id).first_name %></h2>
+                            <div class="review-stars">
+                              <% 5.times do |x| %>
+                                <% if x < review.rating %>
+                                  <li class="fa fa-star checked"></li>
+                                <% else %>
+                                  <li class="fa fa-star"></li>
+                                <% end %>
                               <% end %>
-                            <% end %>
-                          </h2>
+                            </div>
+                            <i class="fas fa-arrow-circle-right"></i>
                         </div>
-                        <div class="container p-2">
+
+                        <div class="review-text">
                           <p><%= review.content %></p>
                         </div>
                       </div>
