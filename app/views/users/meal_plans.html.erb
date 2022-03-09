@@ -15,7 +15,7 @@
 
   <div class="carousel" data-controller="meal-plan">
     <div class="month-names-carousel">
-      <div id="carouselExampleControls" class="carousel slide month" data-bs-ride="carousel" data-bs-interval="false">
+      <div id="carouselExampleControls" class="carousel slide month" data-bs-ride="carousel" data-bs-interval="false" data-bs-touch="false">
         <div class="carousel-inner">
 
 
@@ -29,7 +29,7 @@
           <% if [4, 8, 12, 16].include?(index) %>
             <div class="carousel-item">
               <div class="row">
-                <div class=" date-show col-12">
+                <div class=" date-show-name col-12">
           <% end %>
 
           <p class="name-day" style="d-flex text-size: 5px"><%= name.upcase[0, 3]  %></p>
@@ -57,7 +57,7 @@
         </button>
 
     <div class="numbers-month-carousel">
-      <div id="carouselExampleControls1" class="carousel slide numbers" data-bs-ride="carousel" data-bs-interval="false">
+      <div id="carouselExampleControls1" class="carousel slide numbers" data-bs-ride="carousel" data-bs-interval="false" data-bs-touch="false">
         <div class="carousel-inner">
 
         <% dates.each_with_index do |date, index| %>
