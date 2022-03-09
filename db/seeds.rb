@@ -10,93 +10,93 @@ require 'faker'
 require 'nokogiri'
 require 'open-uri'
 
-# puts "Making the bosses!"
+puts "Making the bosses!"
 
-# ['al@boss.com', 'anja@boss.com', 'alex@boss.com'].each do |user|
-#   User.create(
-#     first_name: user[0..-10].capitalize,
-#     last_name: Faker::Name.last_name,
-#     email: user,
-#     password: 'password'
-#   )
+['al@boss.com', 'anja@boss.com', 'alex@boss.com'].each do |user|
+  User.create(
+    first_name: user[0..-10].capitalize,
+    last_name: Faker::Name.last_name,
+    email: user,
+    password: 'password'
+  )
 
-#   puts "Boss #{user[0..-10].capitalize} made!"
-# end
+  puts "Boss #{user[0..-10].capitalize} made!"
+end
 
-# 7.times do
-#   User.create(
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name,
-#     email: Faker::Internet.email,
-#     password: 'password'
-#   )
-# end
+7.times do
+  User.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: 'password'
+  )
+end
 
-# puts "---------------------------"
+puts "---------------------------"
 
-# puts "Creating Medium Oddbox!"
+puts "Creating Medium Oddbox!"
 
-# 3.times do |id|
-#   Oddbox.create(name: "Medium Oddbox", user_id: id + 1)
-# end
+3.times do |id|
+  Oddbox.create(name: "Medium Oddbox", user_id: id + 1)
+end
 
-# puts "Creating Recipes!"
+puts "Creating Recipes!"
 
-# names = []
-# image_urls = []
-# urls = []
+names = []
+image_urls = []
+urls = []
 
-# 3.times do |x|
-#   odd_url = URI.open("https://www.oddbox.co.uk/recipes/page/#{x + 1}")
-#   odd_noko = Nokogiri::HTML(odd_url)
+3.times do |x|
+  odd_url = URI.open("https://www.oddbox.co.uk/recipes/page/#{x + 1}")
+  odd_noko = Nokogiri::HTML(odd_url)
 
-#   names << odd_noko.search(".curated-posts-section__post-title h1").map(&:text)
+  names << odd_noko.search(".curated-posts-section__post-title h1").map(&:text)
 
-#   image_urls << odd_noko.search(".curated-posts-section__post img").map do |y|
-#     unless y['src'].nil?
-#       y['src'] if y['src'].include?('prismic')
-#     end
-#   end
-#   image_urls[x].compact!
+  image_urls << odd_noko.search(".curated-posts-section__post img").map do |y|
+    unless y['src'].nil?
+      y['src'] if y['src'].include?('prismic')
+    end
+  end
+  image_urls[x].compact!
 
-#   urls << odd_noko.search(".curated-posts-section__post a").map do |link|
-#     link["href"] if link["href"].include?("recipes")
-#   end
-#   urls[x].compact!
-# end
+  urls << odd_noko.search(".curated-posts-section__post a").map do |link|
+    link["href"] if link["href"].include?("recipes")
+  end
+  urls[x].compact!
+end
 
-# names.flatten!
-# image_urls.flatten!
-# urls.flatten!
+names.flatten!
+image_urls.flatten!
+urls.flatten!
 
-# descriptions = []
-# method = []
-# ingredients = []
-# ing_quantity = []
+descriptions = []
+method = []
+ingredients = []
+ing_quantity = []
 
-# urls.each do |url|
-#   print "."
-#   temp_noko = Nokogiri::HTML(URI.open("https://www.oddbox.co.uk#{url}"))
-#   temp_ingredients = temp_noko.search(".recipe__ingredients p").map do |ing|
-#     x = ing.text.match(/^(?<amount>\w?\d*\W?\s*(g|ml|tbsp|tsp)?)?\s*(?<ing>[a-zA-Z]\s?[a-z]*(-|\s)?[a-zA-Z|&]*\s?([a-zA-Z]*|$?)\s?([a-z]{2,})?)$?(?<extra>\(.*\))?$?/)
-#     x['ing'].strip unless x['ing'].strip.nil?
-#   end
+urls.each do |url|
+  print "."
+  temp_noko = Nokogiri::HTML(URI.open("https://www.oddbox.co.uk#{url}"))
+  temp_ingredients = temp_noko.search(".recipe__ingredients p").map do |ing|
+    x = ing.text.match(/^(?<amount>\w?\d*\W?\s*(g|ml|tbsp|tsp)?)?\s*(?<ing>[a-zA-Z]\s?[a-z]*(-|\s)?[a-zA-Z|&]*\s?([a-zA-Z]*|$?)\s?([a-z]{2,})?)$?(?<extra>\(.*\))?$?/)
+    x['ing'].strip unless x['ing'].strip.nil?
+  end
 
-#   temp_ing_quantity = temp_noko.search(".recipe__ingredients p").map do |ing|
-#     x = ing.text.match(/^(?<amount>\w?\d*\W?\s*(g|ml|tbsp|tsp)?)?\s*(?<ing>[a-zA-Z]\s?[a-z]*(-|\s)?[a-zA-Z|&]*\s?([a-zA-Z]*|$?)\s?([a-z]{2,})?)$?(?<extra>\(.*\))?$?/)
-#     x['amount'].strip unless x['amount'].strip.nil?
-#   end
+  temp_ing_quantity = temp_noko.search(".recipe__ingredients p").map do |ing|
+    x = ing.text.match(/^(?<amount>\w?\d*\W?\s*(g|ml|tbsp|tsp)?)?\s*(?<ing>[a-zA-Z]\s?[a-z]*(-|\s)?[a-zA-Z|&]*\s?([a-zA-Z]*|$?)\s?([a-z]{2,})?)$?(?<extra>\(.*\))?$?/)
+    x['amount'].strip unless x['amount'].strip.nil?
+  end
 
-#   ingredients << temp_ingredients
-#   ing_quantity << temp_ing_quantity
-#   descriptions << temp_noko.search(".post__description p").text
+  ingredients << temp_ingredients
+  ing_quantity << temp_ing_quantity
+  descriptions << temp_noko.search(".post__description p").text
 
-#   temp_method = temp_noko.search(".recipe__content li").map(&:text)
+  temp_method = temp_noko.search(".recipe__content li").map(&:text)
 
-#   method << temp_method
-# end
+  method << temp_method
+end
 
-# puts ""
+puts ""
 
 ind_ing = ingredients.join(", ").split(", ").sort.uniq
 
