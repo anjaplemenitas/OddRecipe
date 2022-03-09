@@ -34,7 +34,7 @@
     <% recipe = Recipe.find(meal) %>
     <div class="card-product-infos" data-controller="dropdown">
       <h2><%= recipe.name %></h2>
-      <div class="dropdown">
+      <div class="dropdown shopping-drop">
         <a class="dropbtn" data-action="click->dropdown#toggleSubstitutes"> <i class="fa fa-caret-down"></i> Ingredients</a>
         <div id="myDropdown" class="dropdown-content" data-dropdown-target="dropdown">
           <ul class="recipe-sub-li">

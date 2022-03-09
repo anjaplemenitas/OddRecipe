@@ -1,0 +1,26 @@
+.shopping-drop {
+  border: #2E5A36 solid 3px;
+  background-color: white;
+  color: black;
+  a {
+    background-color: white;
+    color: #2E5A36;
+    &:hover {
+      color: #2E5A36 !important;
+    }
+  }
+  input {
+    border: black solid 1px;
+    background-color: white;
+    &:checked {
+      background-color: #F2B63E;
+    }
+  }
+  .form-check-input.is-valid {
+    background-color: #F2B63E;
+    border-color: black;
+    &:checked {
+    background-color: #F2B63E;
+    }
+  }
+}
