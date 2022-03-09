@@ -21,13 +21,15 @@
       <% month = ymd[1].to_i %>
       <% day = ymd[2].to_i %>
       <% if Time.new(year, month, day) >= Time.new(Time.now.strftime("%Y").to_i, Time.now.strftime("%m").to_i, Time.now.strftime("%d").to_i) %>
-        <% if date_counter == meal_plan.date %>
+        <% if date_counter == meal_plan.date && index == 0 %>
           <%= date.strftime('%a') %>
-          <%= date.day %>.<%= Date::MONTHNAMES[date.month].downcase %>
+          <%= date.day.ordinalize %>
+          <%= Date::MONTHNAMES[date.month].capitalize  %>
         <% elsif date_counter != @meal_plan[index - 1].date %>
           <% date_counter = meal_plan.date %>
           <%= date.strftime('%a') %>
-          <%= date.day %>.<%= Date::MONTHNAMES[date.month].downcase %>
+          <%= date.day.ordinalize %>
+          <%= Date::MONTHNAMES[date.month].capitalize  %>
         <% end %>
         <% date_counter = @meal_plan[index + 1].date if index < @meal_plan.count - 1 %>
     </div>
