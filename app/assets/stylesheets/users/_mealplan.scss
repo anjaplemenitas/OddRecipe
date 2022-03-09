@@ -129,8 +129,10 @@
 
     form {
       width: 42px;
-      text-align: center;
       margin: 0px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
     }
   }
