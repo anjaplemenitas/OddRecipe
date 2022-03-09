@@ -15,12 +15,18 @@
     &:checked {
       background-color: #F2B63E;
     }
+    &:focus {
+      box-shadow: none;
+    }
   }
   .form-check-input.is-valid {
     background-color: #F2B63E;
     border-color: black;
     &:checked {
     background-color: #F2B63E;
+    }
+    &:focus {
+      box-shadow: none;
     }
   }
 }
