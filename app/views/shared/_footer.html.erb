@@ -12,11 +12,11 @@
         <%= link_to user_meal_plan_path(current_user) do %>
           <i class="fas fa-calendar-alt <%= "footer-active" if params[:controller] == "users" && params[:action] == "meal_plans" %>"></i>
         <% end %>
-        <%# <%= link_to linkto do %>
-        <i class="fas fa-shopping-basket"></i>
-        <%# <% end %>
+        <%= link_to user_shopping_list_path(current_user) do %>
+          <i class="fas fa-shopping-basket"></i>
+        <% end %>
         <%= link_to user_oddbook_path(current_user) do %>
-        <i class="fa fa-solid fa-heart <%= "footer-active" if params[:controller] == "users" && params[:action] == "oddbook" %>"></i>
+          <i class="fa fa-solid fa-heart <%= "footer-active" if params[:controller] == "users" && params[:action] == "oddbook" %>"></i>
         <% end %>
       <% end %>
     </div>
