@@ -106,16 +106,18 @@ end
 
 puts "Creating Medium Oddbox Ingredients!"
 
-["Avocado",
- "Beetroots",
- "Cavolo nero",
- "Brussels sprouts",
- "Carrots",
- "Cucumbers",
- "Ginger",
- "Limes",
- "Mango"].each do |ing|
-  OddboxIngredient.create(oddbox_id: 1, ingredient_id: Ingredient.find_by(name: ing).id)
+3.times do |x|
+  ["Avocado",
+   "Beetroots",
+   "Cavolo nero",
+   "Brussels sprouts",
+   "Carrots",
+   "Cucumbers",
+   "Ginger",
+   "Limes",
+   "Mango"].each do |ing|
+    OddboxIngredient.create(oddbox_id: x + 1, ingredient_id: Ingredient.find_by(name: ing).id)
+  end
 end
 
 puts "---------------------------"

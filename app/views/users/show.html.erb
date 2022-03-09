@@ -5,7 +5,11 @@
       <h2 class="py-3 my-4 user-show-head" >Recipes</h2>
     <% end %>
 
-    <% unless current_user.oddbox.nil? %>
+    <% if current_user.oddbox.nil? %>
+      <%= link_to user_add_odd_box_path(current_user), class: "user-show-link" do %>
+        <h2 class="py-3 my-4 user-show-head" >Add OddBox</h2>
+      <% end %>
+    <% else %>
       <%= link_to oddbox_path(@oddbox), class: "user-show-link" do %>
         <h2 class="py-3 my-4 user-show-head" >OddBox</h2>
       <% end %>
