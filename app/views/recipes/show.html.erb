@@ -11,7 +11,7 @@
     <div class="recipe-card-links">
       <div class="recipe-time">
         <p> <i class="far fa-clock"></i> <%= @recipe.cooking_time %> mins </p>
-          <%= link_to new_recipe_review_path(@recipe) do %>
+          <%= link_to "#recipe-reviews" do %>
           <ul class="recipe-stars"> <% 5.times do |x| %>
             <% if x < @recipe.rating %>
               <li class="fa fa-star checked"> </li>
@@ -424,33 +424,35 @@
                           </div>
                         </div>
                 </div>
-                <% @recipe.reviews.sort_by(&:created_at).reverse.each do |review| %>
-                  <div class="carousel-item">
-                    <div class="meal-plan-review">
-                      <div class="card-product flex-column review-card" id="review-<%= review.id %>">
-                        <div class="name-review">
-                          <h2><%= User.find(review.user_id).first_name %></h2>
-                            <div class="review-stars">
-                              <% 5.times do |x| %>
-                                <% if x < review.rating %>
-                                  <li class="fa fa-star checked"></li>
-                                <% else %>
-                                  <li class="fa fa-star"></li>
+                  <div id="recipe-reviews">
+                  <% @recipe.reviews.sort_by(&:created_at).reverse.each do |review| %>
+                    <div class="carousel-item">
+                      <div class="meal-plan-review">
+                        <div class="card-product flex-column review-card" id="review-<%= review.id %>">
+                          <div class="name-review">
+                            <h2><%= User.find(review.user_id).first_name %></h2>
+                              <div class="review-stars">
+                                <% 5.times do |x| %>
+                                  <% if x < review.rating %>
+                                    <li class="fa fa-star checked"></li>
+                                  <% else %>
+                                    <li class="fa fa-star"></li>
+                                  <% end %>
                                 <% end %>
-                              <% end %>
-                            </div>
-                            <a role="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="next"> <i class="fas fa-arrow-circle-right"></i> </a>
-                        </div>
+                              </div>
+                              <a role="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="next"> <i class="fas fa-arrow-circle-right"></i> </a>
+                          </div>
 
-                        <div class="review-text">
-                          <p><%= review.content %></p>
+                          <div class="review-text">
+                            <p><%= review.content %></p>
+                          </div>
                         </div>
                       </div>
-                  </div>
+                    </div>
+                  <% end %>
                   </div>
 
-                </div>
-                <% end %>
               </div>
             </div>
+          </div>
 </div>
