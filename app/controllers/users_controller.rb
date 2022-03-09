@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def shopping_list
-    @odd_ingredients = current_user.oddbox.ingredients
-    @meal_plan = current_user.meal_plan(current_user)
+    @user = current_user
+    @meal_plan = @user.meal_plan(@user)
   end
 end

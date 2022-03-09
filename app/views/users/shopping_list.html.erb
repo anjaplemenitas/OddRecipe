@@ -1,9 +1,48 @@
-<% @meal_plan.each_with_index do |meal, i| %>
-  <% Recipe.find(meal.recipe_id).ingredients.each_with_index do |ingredients, index| %>
-    <% rec_ing = RecipeIngredient.where(recipe_id: meal.recipe_id) %>
-    <% if Recipe.find(meal.recipe_id).name != Recipe.find(@meal_plan[i - 1].recipe_id).name || i == 0 %>
-      <h2><%= Recipe.find(meal.recipe_id).name %></h2>
-    <% end %>
-    <p><%= rec_ing[index].quantity %> <%= ingredients.name %></p>
+<div class="meal-plan-show container">
+  <h1>Shopping List</h1>
+
+  <% dates = [] %>
+  <% 20.times do |i| %>
+  <% dates << ((Date.today + i).strftime("%d")).to_i %>
   <% end %>
-<% end %>
+
+  <% dates_name = [] %>
+  <% dates.each_with_index do |date, index| %>
+    <% dates_name << Date::DAYNAMES[Date.new(2022, 03, date).wday]%>
+  <% end %>
+
+  <% @meal_plan.each_with_index do |meal_plan, index| %>
+  <% date_counter = meal_plan.date %>
+    <% meal = meal_plan.recipe_id%>
+    <div class = "date-meal-plan">
+      <% date = meal_plan.date %>
+      <% ymd = date.to_s.split("-") %>
+      <% year = ymd[0].to_i %>
+      <% month = ymd[1].to_i %>
+      <% day = ymd[2].to_i %>
+      <% if Time.new(year, month, day) >= Time.new(Time.now.strftime("%Y").to_i, Time.now.strftime("%m").to_i, Time.now.strftime("%d").to_i) %>
+        <% if date_counter == meal_plan.date %>
+          <%= date.strftime('%a') %>
+          <%= date.day %>.<%= Date::MONTHNAMES[date.month].downcase %>
+        <% elsif date_counter != @meal_plan[index - 1].date %>
+          <% date_counter = meal_plan.date %>
+          <%= date.strftime('%a') %>
+          <%= date.day %>.<%= Date::MONTHNAMES[date.month].downcase %>
+        <% end %>
+        <% date_counter = @meal_plan[index + 1].date if index < @meal_plan.count - 1 %>
+    </div>
+    <% recipe = Recipe.find(meal) %>
+    <div class="card-product-infos" data-controller="dropdown">
+      <h2><%= recipe.name %></h2>
+      <div class="dropdown">
+        <a class="dropbtn" data-action="click->dropdown#toggleSubstitutes"> <i class="fa fa-caret-down"></i> Ingredients</a>
+        <div id="myDropdown" class="dropdown-content" data-dropdown-target="dropdown">
+          <ul class="recipe-sub-li">
+            <%= render 'list', recipe: recipe, meal_plan: meal_plan %>
+          </ul>
+        </div>
+      </div>
+    </div>
+      <% end %>
+  <% end %>
+</div>
