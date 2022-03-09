@@ -1,7 +1,6 @@
 .meal-plan-show {
   position: relative;
 
-
   h1 {
     text-align: center;
     color: #2E5A36;
@@ -123,9 +122,17 @@
 
   .date-show{
     display: flex;
-    gap: 37px;
+    padding-bottom: 3px;
+    justify-content: space-evenly;
     justify-content: center;
     font-family: 'Interstate-regular';
+
+    form {
+      width: 42px;
+      text-align: center;
+      margin: 0px 15px;
+
+    }
   }
 
   .date-show-name {
