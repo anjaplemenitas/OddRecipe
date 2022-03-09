@@ -182,3 +182,16 @@
 }
 
 }
+
+.name-review {
+  position: relative;
+
+  .fa-arrow-circle-right {
+    position: absolute;
+    top: 18px;
+    right: 30px;
+    font-size: larger;
+    color: #2E5A36 !important;
+  }
+
+}
