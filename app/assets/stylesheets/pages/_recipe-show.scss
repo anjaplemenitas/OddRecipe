@@ -32,8 +32,9 @@
     position: absolute;
     bottom: 8px;
     right: 8px;
-    color:#F2B63E;
+    color: white;
     font-size: x-large;
+    text-shadow: 1px 1px 3px black;
   }
 }
 
@@ -164,6 +165,7 @@ a:hover{
   list-style-type: none;
   margin-top: 5px;
   font-family: 'Interstate-light';
+  padding: 0px 5px;
 
   li {
     margin-bottom: 10px;
@@ -218,6 +220,7 @@ a:hover{
 
   p {
     font-family: 'Interstate-light';
+    padding-top: 10px;
   }
 }
 
@@ -231,6 +234,7 @@ a:hover{
 
   p {
     font-family: 'Interstate-light';
+    padding-top: 10px;
   }
 }
 

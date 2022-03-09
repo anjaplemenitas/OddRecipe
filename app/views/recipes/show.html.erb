@@ -1,4 +1,4 @@
-<div class="container" style="padding: 3;">
+<div class="container">
   <div class="recipe-header">
     <h1><%= @recipe.name %></h1>
   </div>
@@ -399,7 +399,7 @@
                   <button class="button-review"><%= link_to "Leave a review", new_recipe_review_path(@recipe)%></button>
                 </div>
 
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselExampleSlidesOnly" class="carousel slide">
               <div class="carousel-inner">
                 <div class="carousel-item active">
                   <% review = @recipe.reviews.first %>
@@ -416,6 +416,7 @@
                                   <% end %>
                                 <% end %>
                               </div>
+                             <a role="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="next"> <i class="fas fa-arrow-circle-right"></i> </a>
                             </div>
                             <div class="container p-2">
                               <p><%= review.content %></p>
@@ -438,7 +439,9 @@
                                 <% end %>
                               <% end %>
                             </div>
+                            <a role="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="next"> <i class="fas fa-arrow-circle-right"></i> </a>
                         </div>
+
                         <div class="review-text">
                           <p><%= review.content %></p>
                         </div>
