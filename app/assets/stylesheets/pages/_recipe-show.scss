@@ -267,19 +267,42 @@ a:hover{
   margin-top: 15px;
 }
 
-.fa-angle-right {
-  font-size: 25px;
-  position: absolute;
-  top: 165px;
-  left: 35px;
+.cal-modal-buttons {
+  position: relative;
+
+  .fa-arrow-circle-left {
+    position: absolute;
+    color: white;
+    bottom: 40px;
+    left: 11px;
+    font-size: 20px;
+    opacity: none !important;
+  }
+
+  .fa-arrow-circle-right {
+    position: absolute;
+    color: white;
+    bottom: 40px;
+    left: 322px;
+    font-size: 20px;
+    opacity: none !important;
+  }
+
 }
 
-.fa-angle-left {
-  font-size: 25px;
-  position: absolute;
-  top: 165px;
-  right: 25px;
-}
+// .fa-angle-right {
+//   font-size: 25px;
+//   position: absolute;
+//   top: 165px;
+//   left: 35px;
+// }
+
+// .fa-angle-left {
+//   font-size: 25px;
+//   position: absolute;
+//   top: 165px;
+//   right: 25px;
+// }
 
 .fa-plus {
   display: flex;
@@ -338,6 +361,7 @@ a:hover{
   border-top: none;
   background-color: #2E5A36;
   padding: 0.15rem;
+  height: 35px;
 }
 
 .modal-header {
