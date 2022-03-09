@@ -3,6 +3,24 @@ class UsersController < ApplicationController
     @oddbox = current_user.oddbox
   end
 
+  def add_odd_box
+    @oddbox = Oddbox.create(name: "Medium Oddbox", user_id: current_user.id)
+
+    ["Avocado",
+     "Beetroots",
+     "Cavolo nero",
+     "Brussels sprouts",
+     "Carrots",
+     "Cucumbers",
+     "Ginger",
+     "Limes",
+     "Mango"].each do |ing|
+       OddboxIngredient.create(oddbox_id: @oddbox.id, ingredient_id: Ingredient.find_by(name: ing).id)
+     end
+
+    redirect_to oddbox_path(current_user)
+  end
+
   def meal_plans
     @user = current_user
     if params[:previous_date].present? && params[:previous_date] == params[:date]
