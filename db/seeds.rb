@@ -10,37 +10,37 @@ require 'faker'
 require 'nokogiri'
 require 'open-uri'
 
-puts "Making the bosses!"
+# puts "Making the bosses!"
 
-['al@boss.com', 'anja@boss.com', 'alex@boss.com'].each do |user|
-  User.create(
-    first_name: user[0..-10].capitalize,
-    last_name: Faker::Name.last_name,
-    email: user,
-    password: 'password'
-  )
+# ['al@boss.com', 'anja@boss.com', 'alex@boss.com'].each do |user|
+#   User.create(
+#     first_name: user[0..-10].capitalize,
+#     last_name: Faker::Name.last_name,
+#     email: user,
+#     password: 'password'
+#   )
 
-  puts "Boss #{user[0..-10].capitalize} made!"
-end
+#   puts "Boss #{user[0..-10].capitalize} made!"
+# end
 
-7.times do
-  User.create(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: Faker::Internet.email,
-    password: 'password'
-  )
-end
+# 7.times do
+#   User.create(
+#     first_name: Faker::Name.first_name,
+#     last_name: Faker::Name.last_name,
+#     email: Faker::Internet.email,
+#     password: 'password'
+#   )
+# end
 
-puts "---------------------------"
+# puts "---------------------------"
 
-puts "Creating Medium Oddbox!"
+# puts "Creating Medium Oddbox!"
 
-3.times do |id|
-  Oddbox.create(name: "Medium Oddbox", user_id: id + 1)
-end
+# 3.times do |id|
+#   Oddbox.create(name: "Medium Oddbox", user_id: id + 1)
+# end
 
-puts "Creating Recipes!"
+# puts "Creating Recipes!"
 
 # names = []
 # image_urls = []
