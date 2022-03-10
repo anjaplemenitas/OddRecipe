@@ -2,7 +2,7 @@
   <%= simple_form_for meal_plan.shopping_lists[i], remote: true, method: :patch, data: { check_purchase_target: "form", controller: "check-purchase" } do |f|  %>
     <div class="container d-flex">
       <li><%= f.input :purchased, as: :boolean, checked_value: true, unchecked_value: false, label: false, input_html: { data: { check_purchase_target: "box", url: "/shopping_lists/#{meal_plan.shopping_lists[i].id}", action: "change->check-purchase#test" } } %></li>
-      <li><%= RecipeIngredient.find_by(ingredient_id: meal_plan.shopping_lists[i].ingredient.id).quantity %> <%= meal_plan.shopping_lists[i].ingredient.name %> <%= f.submit "Update", data: { check_purchase_target: "submit" }, hidden: '' %></li>
+      <li><%= RecipeIngredient.find_by(ingredient_id: meal_plan.shopping_lists[i].ingredient.id).quantity %> <%= meal_plan.shopping_lists[i].ingredient.name %> <i class="<%= "fa fa-solid fa-box-open" if Oddbox.find_by(user_id: 1).ingredients.map(&:name).include?(meal_plan.shopping_lists[i].ingredient.name) %>"></i> <%= f.submit "Update", data: { check_purchase_target: "submit" }, hidden: '' %></li>
     </div>
   <% end %>
 <% end %>
