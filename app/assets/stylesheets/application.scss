@@ -7,7 +7,7 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "jquery-bar-rating/dist/themes/fontawesome-stars";
+// @import "jquery-bar-rating/dist/themes/fontawesome-stars";
 
 // Your CSS partials
 @import "components/index";
@@ -35,4 +35,44 @@
 
 body {
   background-color: white;
+}
+
+.br-theme-fontawesome-stars .br-widget {
+  height: 28px;
+  white-space: nowrap;
+}
+.br-theme-fontawesome-stars .br-widget a {
+  font: normal normal normal 20px/1 'Font Awesome 5 Free';
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  margin-right: 2px;
+  font-weight: 600;
+}
+.br-theme-fontawesome-stars .br-widget a:after {
+  content: '\f005';
+  color: black;
+}
+.br-theme-fontawesome-stars .br-widget a.br-active:after {
+  color: #EDB867;
+}
+.br-theme-fontawesome-stars .br-widget a.br-selected:after {
+  color: orange;
+}
+.br-theme-fontawesome-stars .br-widget .br-current-rating {
+  display: none;
+}
+.br-theme-fontawesome-stars .br-readonly a {
+  cursor: default;
+}
+@media print {
+  .br-theme-fontawesome-stars .br-widget a:after {
+    content: '\f006';
+    color: black;
+  }
+  .br-theme-fontawesome-stars .br-widget a.br-active:after,
+  .br-theme-fontawesome-stars .br-widget a.br-selected:after {
+    content: '\f005';
+    color: black;
+  }
 }
