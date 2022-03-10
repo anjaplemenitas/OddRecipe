@@ -136,9 +136,9 @@
             <i class="fas fa-times-circle"></i>
           <% end %>
               <div class="stars-meal-plan">
-                <p><% review = Review.find(recipe.id) %></p>
+                <p><% rec_rating = recipe.rating %></p>
                 <ul class="stars-index" ><% 5.times do |x| %>
-                  <% if x < review.rating %>
+                  <% if x < rec_rating %>
                     <li class="fa fa-star checked"> </li>
                   <% else %>
                     <li class="fa fa-star"> </li>
