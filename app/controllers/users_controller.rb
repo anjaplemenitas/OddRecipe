@@ -27,7 +27,8 @@ class UsersController < ApplicationController
       @meal_plan = @user.meal_plan(@user)
     elsif params[:date].present?
       date = Date.new(2022, 03, params[:date].to_i)
-      @meal_plan = MealPlan.where(date: date)
+      @meal_plan = @user.meal_plan(@user)
+      @meal_plan = MealPlan.where(id: @meal_plan.map(&:id)).where(date: date)
     else
       @meal_plan = @user.meal_plan(@user)
     end
