@@ -16,7 +16,7 @@ export default class extends Controller {
     console.log(this.formTarget)
     console.log(this.submitTarget)
 
-    fetch(`http://localhost:3000${url}`, {
+    fetch(url, {
       headers: {
         'Accept': 'application/json',
         "X-CSRF-Token": csrfToken()
