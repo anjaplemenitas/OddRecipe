@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
+  root to: 'pages#home', as: 'home'
 
   get 'users/:id/meal_plan', to: 'users#meal_plans', as: 'user_meal_plan'
   get 'users/:id/oddbook', to: 'users#oddbook', as: 'user_oddbook'
