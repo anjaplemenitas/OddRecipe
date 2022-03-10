@@ -18,11 +18,6 @@ ActiveStorage.start()
 import "controllers"
 import "bootstrap"
 
-// document.querySelector('.c-next').addEventListener('click', () => {
-//   document.querySelector('.next1').click();
-//   document.querySelector('.next2').click();
-// })
-// document.querySelector('.c-prev').addEventListener('click', () => {
-//   document.querySelector('.prev1').click();
-//   document.querySelector('.prev2').click();
-// })
+document.addEventListener('turbolinks:load', () => {
+  initStarRating();
+});

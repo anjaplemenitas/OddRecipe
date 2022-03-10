@@ -1,0 +1,43 @@
+.shopping-drop {
+  border: #2E5A36 solid 3px;
+  background-color: white;
+  color: black;
+  i.fa-solid {
+    color: #F2B63E;
+    padding-left: 2px;
+  }
+  a {
+    background-color: white;
+    color: #2E5A36;
+    &:hover {
+      color: #2E5A36 !important;
+    }
+  }
+  input {
+    border: black solid 1px;
+    background-color: #2E5A36;
+    &:checked {
+      border: black solid 1px;
+      background-color: #2E5A36;
+    }
+    &:focus {
+      border: black solid 1px;
+      box-shadow: none;
+    }
+    .fa-box-open {
+      color: #F2B63E;
+    }
+  }
+  .form-check-input.is-valid {
+    background-color: #2E5A36;
+    border-color: black;
+    &:checked {
+      border: black solid 1px;
+      background-color: #2E5A36;
+    }
+    &:focus {
+      border: black solid 1px;
+      box-shadow: none;
+    }
+  }
+}
