@@ -14,7 +14,7 @@
   <% @meal_plan.each_with_index do |meal_plan, index| %>
   <% date_counter = meal_plan.date %>
     <% meal = meal_plan.recipe_id%>
-    <div class = "date-meal-plan">
+    <div class = "date-meal-plan" style="color: #f2b63e;">
       <% date = meal_plan.date %>
       <% ymd = date.to_s.split("-") %>
       <% year = ymd[0].to_i %>
@@ -34,7 +34,7 @@
         <% date_counter = @meal_plan[index + 1].date if index < @meal_plan.count - 1 %>
     </div>
     <% recipe = Recipe.find(meal) %>
-    <div class="card-product-infos" data-controller="dropdown">
+    <div class="card-product-infos" data-controller="dropdown" style="padding-left: 10px; padding-right: 10px; padding-top: 18px;">
       <h2><%= recipe.name %></h2>
       <div class="dropdown shopping-drop">
         <a class="dropbtn" data-action="click->dropdown#toggleSubstitutes"> <i class="fa fa-caret-down"></i> Ingredients</a>
