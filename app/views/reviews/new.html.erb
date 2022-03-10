@@ -11,7 +11,7 @@
     <%= simple_form_for [@recipe, @review] do |f| %>
       <%= f.input :content, label: "Leave a review" %>
       <%= f.input :rating, label: "Rate this recipe", collection: (1..5).to_a %>
-      <%= f.submit "Submit", class: "button-submit" %>
+      <%= f.submit "Add a Review", class: "button-submit" %>
     <% end %>
   </div>
   <div class="meal-plan-review">
