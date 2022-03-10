@@ -10,7 +10,7 @@
         <h2 class="py-3 my-4 user-show-head" >Add OddBox</h2>
       <% end %>
     <% else %>
-      <%= link_to oddbox_path(@oddbox), class: "user-show-link" do %>
+      <%= link_to oddbox_path(current_user), class: "user-show-link" do %>
         <h2 class="py-3 my-4 user-show-head" >OddBox</h2>
       <% end %>
     <% end %>
