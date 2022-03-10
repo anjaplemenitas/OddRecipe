@@ -272,12 +272,14 @@ a:hover{
 
 .cal-modal-buttons {
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  bottom: 25px;
+  width: 100%;
 
   .fa-arrow-circle-left {
     position: absolute;
     color: white;
-    bottom: 40px;
-    left: 11px;
     font-size: 20px;
     opacity: none !important;
   }
@@ -285,8 +287,6 @@ a:hover{
   .fa-arrow-circle-right {
     position: absolute;
     color: white;
-    bottom: 40px;
-    left: 322px;
     font-size: 20px;
     opacity: none !important;
   }
