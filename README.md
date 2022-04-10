@@ -1,8 +1,11 @@
 <a href="www.oddrecipe.me"><h1>OddRecipe</h1></a>
 
-<h4>A mobile web based application that helps find recipes based on
-ingredients, create a shopping list based on recipes, add recipes to a calendar for a meal
-plan and save recipes as favourites.</h4>
+<h4>Created a web app that is helping reduce food waste - inspired by OddBox sustainable company.
+The app is connected to your OddBox subscription (non-subscribers can use it too) and gives you the top 5 recipes connected to your box that week. You can create meal plans on the calendar page. Shopping list feature that connects to your calendar and makes it easier to shop what you need for a specific dish. That way you really reduce food waste. 
+My input on the app was coming up with the idea, working on most parts in development, but working mostly frontend work. I created a whole visual aspect of it. 
+<br>
+<br>
+Our demo presentation:  https://www.youtube.com/watch?v=f_PJcHAoMx8</h4>
 
 <br>
 
