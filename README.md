@@ -9,5 +9,6 @@ plan and save recipes as favourites.</h4>
 <img width="302" alt="shoppinglist" src="https://user-images.githubusercontent.com/93189774/162626969-d7705636-9f5b-4ead-92cc-1a81e7e73fe1.png"><img width="305" alt="review1" src="https://user-images.githubusercontent.com/93189774/162627009-094ad312-cd5c-4ea9-a3c0-25538adb2b0b.png">
 
 <br>
-https://user-images.githubusercontent.com/93189774/162627596-e394a1ee-b8ed-4df6-9e44-2824ffbe6160.mp4
+
+https://user-images.githubusercontent.com/93189774/162628107-2bcb8ee7-b54d-46d6-8d4f-8f006a0b0ff8.mov
 
