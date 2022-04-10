@@ -12,3 +12,5 @@ plan and save recipes as favourites.</h4>
 
 https://user-images.githubusercontent.com/93189774/162628107-2bcb8ee7-b54d-46d6-8d4f-8f006a0b0ff8.mov
 
+<br>
+Link: www.oddrecipe.me
