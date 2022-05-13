@@ -1,4 +1,4 @@
-<a href="www.oddrecipe.me"><h1>OddRecipe</h1></a>
+<a href="#"><h1>OddRecipe</h1></a>
 
 <h4>Created a web app that is helping reduce food waste - inspired by OddBox sustainable company.
 The app is connected to your OddBox subscription (non-subscribers can use it too) and gives you the top 5 recipes connected to your box that week. You can create meal plans on the calendar page. Shopping list feature that connects to your calendar and makes it easier to shop what you need for a specific dish. That way you really reduce food waste. 
