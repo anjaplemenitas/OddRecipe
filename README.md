@@ -1,3 +1,5 @@
+<h5>I work in a group of 3 and we created a web app that is helping reduce food waste - inspired by OddBox sustainable company. My input on the app was coming up with the idea, working on most parts in development, but working mostly frontend work. I created a whole visual aspect of it. </h5>
+
 <a href="#"><h1>OddRecipe</h1></a>
 
 <h4>Created a web app that is helping reduce food waste - inspired by OddBox sustainable company.
