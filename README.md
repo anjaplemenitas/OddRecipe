@@ -24,3 +24,27 @@ Link: www.oddrecipe.me
 <img width="302" alt="shoppinglist" src="https://user-images.githubusercontent.com/93189774/162626969-d7705636-9f5b-4ead-92cc-1a81e7e73fe1.png"><img width="305" alt="review1" src="https://user-images.githubusercontent.com/93189774/162627009-094ad312-cd5c-4ea9-a3c0-25538adb2b0b.png">
 
 
+
+
+# Getting Started:
+
+## 1. Check out the repository
+```sh
+git clone git@github.com:anjaplemenitas/OddRecipe.git
+```
+## 2. Installation
+```sh
+bundle install
+```
+## 3. Initialize the database
+```sh
+rails db:create db:migrate db:seed
+```
+## 4. Serve
+```sh
+rails s and land on http://localhost:3000
+```
+
+
+# Enjoy!
+
